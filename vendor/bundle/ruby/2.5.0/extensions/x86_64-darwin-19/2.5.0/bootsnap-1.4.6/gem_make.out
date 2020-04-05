@@ -1,0 +1,15 @@
+current directory: /Users/s.okada/Desktop/catflix/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+/Users/s.okada/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200405-34809-1kd59zl.rb extconf.rb
+creating Makefile
+
+current directory: /Users/s.okada/Desktop/catflix/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/s.okada/Desktop/catflix/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/s.okada/Desktop/catflix/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20200405-34809-1s1s591/bootsnap
