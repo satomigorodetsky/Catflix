@@ -1,3 +1,5 @@
+require "valid_email"
+
 class User < ApplicationRecord
     #fivaper 
     validates :email, presence: true, uniqueness: true

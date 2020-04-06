@@ -2,7 +2,10 @@ import React from 'react';
 
 const App = () => (
    <div>
-     <h1>You are in app.jsx</h1>
+     <header>
+      <h1>CATFLIX</h1>
+      {/* <NavBarContainer /> */}
+     </header>
    </div>
 );
 
