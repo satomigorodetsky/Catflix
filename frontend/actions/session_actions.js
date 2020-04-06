@@ -27,7 +27,10 @@ export const receiveErrors = (errors) => {
 export const signup = (user) => (dispatch) => {
     return ApiUtil.signup(user)
     .then((user) => dispatch(receiveCurrentUser(user)),
-    err => dispatch(receiveErrors(err.resopnseJSON)))
+    err => { 
+
+       return dispatch(receiveErrors(err.responseJSON))
+    })
 };
 
 export const login = (user) => (dispatch) => {
