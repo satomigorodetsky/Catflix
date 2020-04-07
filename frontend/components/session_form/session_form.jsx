@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component{
    constructor(props) {
@@ -11,6 +12,7 @@ class SessionForm extends React.Component{
    };
 
    componentDidMount() {
+       debugger
        this.props.deleteErrors(this.props.errors);
    }
 
@@ -36,14 +38,19 @@ class SessionForm extends React.Component{
    };
    
    handleSubmit(e) {
+       debugger
        e.preventDefault();
        const user = Object.assign({},this.state);
-       this.props.submitForm(user);
+       this.props.submitForm(user)
+       this.setState({
+           email: '',
+           password: ''
+       })
+  
    };
 
-   // this.props.navLink will be added soon  
-
    render (){
+       debugger
        return (
            <div className="session-form-container">  
                <div className="catflix">CATFLIX</div>    

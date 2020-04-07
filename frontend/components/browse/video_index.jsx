@@ -1,10 +1,17 @@
 import React from 'react';
+import NavBarContainer from '../navbar/navbar_container';
+
 class VideoIndex extends React.Component {
     render() {
+        debugger
         return (
             <div>
+                <header>
+                    <NavBarContainer />
+                </header>
                 Video Contents will be here 
             </div>
+
         )
     }
 };
