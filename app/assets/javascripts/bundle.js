@@ -549,11 +549,11 @@ var WelcomePage = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wb-container"
+        className: "wp-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "wb-h1"
+        className: "wp-h1"
       }, "Unlimited cute cat movies, TV shows, and more."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "wb-h3"
+        className: "wp-h3"
       }, "Enjoy the cuteness anywhere. Watch anytime."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemoLogin

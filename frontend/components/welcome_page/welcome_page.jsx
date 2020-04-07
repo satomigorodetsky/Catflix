@@ -14,9 +14,9 @@ class WelcomePage extends React.Component {
 
    render () {
        return (
-           <div className="wb-container">
-                <h1 className="wb-h1">Unlimited cute cat movies, TV shows, and more.</h1>
-                <h3 className="wb-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
+           <div className="wp-container">
+                <h1 className="wp-h1">Unlimited cute cat movies, TV shows, and more.</h1>
+                <h3 className="wp-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
                 <button className="demo-button" onClick={this.handleDemoLogin}>Try for FREE</button>
            </div>
        )

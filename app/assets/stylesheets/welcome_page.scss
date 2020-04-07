@@ -1,0 +1,17 @@
+.wp-container {
+ /* The image used */
+  background-image: url("wp_background.jpg");
+
+  /* Full height */
+    width: 100%;
+    height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+//   position: relative;
+}
+
+h1 {
+    color: white;
+}
