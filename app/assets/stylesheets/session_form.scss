@@ -1,0 +1,98 @@
+.session-form-container {
+ font-family: Arial, Helvetica, sans-serif;
+ background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2),
+  rgba(0, 0, 0, 0.5)), url("wp_back.jpg");
+ width: 100%;
+ height: 1800px;
+ margin: 0;
+ padding: 0;
+ position: relative;
+ background-size:cover;
+ background-repeat: no-repeat;
+} 
+
+.modal-form{  
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -220px;
+  width: 360px;
+  height: 500px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 3;
+  border-radius: 10px;
+  border: 1px solid #000;
+  justify-content: space-around;
+}
+
+.contents {
+   display: block;
+   position: relative;
+   margin: 50px;
+}
+
+h1 {
+    color: white;
+}
+::placeholder {
+    color: rgb(189, 189, 189);
+}
+
+.input-email, .input-password {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(100, 100, 100);
+}
+
+.input-email {
+  margin-top: 20px;
+}
+
+.navlink-line {
+    text-align: center;
+    margin-top: 100px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.navlink {
+      text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.navlink:hover {
+    text-decoration: underline;
+}
+
+.error-lists {
+    margin: 10px;
+    color: white;
+}
+
+.submit-button {
+  font-family: Arial, Helvetica, sans-serif;
+   display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  margin-top: 30px;
+
+}
+
+input, select, textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 5px 15px;
+}
+

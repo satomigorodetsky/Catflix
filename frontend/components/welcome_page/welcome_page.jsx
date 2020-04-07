@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class WelcomePage extends React.Component {
    constructor(props) {
@@ -14,10 +15,18 @@ class WelcomePage extends React.Component {
 
    render () {
        return (
-           <div className="wp-container">
+           <div>
+             <div className="wp-container">
+             <div className="header-container">
+               <div className="catflix">CATFLIX</div>
+               <Link className="login-link" to="/login">Sign In</Link>
+             </div>
+               <div className="inner-container">
                 <h1 className="wp-h1">Unlimited cute cat movies, TV shows, and more.</h1>
                 <h3 className="wp-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
-                <button className="demo-button" onClick={this.handleDemoLogin}>Try for FREE</button>
+                <button className="demo-button" onClick={this.handleDemoLogin}>TRY DEMO FREE</button>
+               </div>
+             </div>
            </div>
        )
    }

@@ -1,17 +1,77 @@
 .wp-container {
- /* The image used */
-  background-image: url("wp_background.jpg");
-
-  /* Full height */
-    width: 100%;
-    height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-//   position: relative;
+ background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.73)), url("wp_back.jpg");
+ width: 100%;
+ height: 1800px;
+ margin: 0;
+ padding: 0;
+ position: relative;
+ background-size:cover;
+ background-repeat: no-repeat;
+}  
+.inner-container{
+   display: block;
+   padding-top: 280px;
+   align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
-h1 {
+
+.wp-h1, .wp-h3 {
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+
+.demo-button {
+  font-family: Arial, Helvetica, sans-serif;
+   display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  margin-top: 30px;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.catflix {
+  color:red;
+  position: relative;
+  top: 30px;
+  left: 100px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
+}
+.login-link {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  display: block;
+  height: 30px;
+  width: 80px;
+  text-align: center;
+  // vertical-align: middle;
+  line-height: 30px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  position: relative; 
+  top: 47px;
+  right: 100px;
+}
+
+.login-link:hover {
+    cursor: pointer;
 }

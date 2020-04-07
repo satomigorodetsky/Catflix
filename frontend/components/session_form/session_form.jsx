@@ -10,6 +10,10 @@ class SessionForm extends React.Component{
        this.handleSubmit = this.handleSubmit.bind(this);
    };
 
+   componentDidMount() {
+       this.props.deleteErrors(this.props.errors);
+   }
+
    update(field) {
        return e => this.setState({
            [field]: e.currentTarget.value
@@ -19,7 +23,7 @@ class SessionForm extends React.Component{
    renderErrors() {
        const errorsLi = this.props.errors.map((error,i) => {
            return (
-               <li key={`error-${i}`}>
+               <li className="error-lists" key={`error-${i}`}>
                   {error}
                </li>
            )
@@ -41,9 +45,11 @@ class SessionForm extends React.Component{
 
    render (){
        return (
-           <div className="session-form-container">
-               <form onSubmit={this.handleSubmit}>
-               <h1 className="form-name">{this.props.form}</h1>
+           <div className="session-form-container">  
+               <div className="catflix">CATFLIX</div>    
+               <form className="modal-form" onSubmit={this.handleSubmit}>
+                <div className="contents">
+               <h1 className="form-name">{this.props.formType}</h1>
                {this.renderErrors()}
                <input type="text" 
                value={this.state.email}
@@ -58,7 +64,12 @@ class SessionForm extends React.Component{
                placeholder="  Password"/>
                <br/>
                <button className="submit-button">{this.props.formType}</button>
+                   <div className="navlink-line">
+                       {this.props.navLink}
+                   </div> 
+                </div>
                </form>
+              
            </div>
        )
    }
