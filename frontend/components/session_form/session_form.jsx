@@ -15,6 +15,21 @@ class SessionForm extends React.Component{
            [field]: e.currentTarget.value
        })
    };
+
+   renderErrors() {
+       const errorsLi = this.props.errors.map((error,i) => {
+           return (
+               <li key={`error-${i}`}>
+                  {error}
+               </li>
+           )
+       });
+       return (
+           <ul>
+              {errorsLi}
+           </ul>
+       )
+   };
    
    handleSubmit(e) {
        e.preventDefault();
@@ -22,12 +37,27 @@ class SessionForm extends React.Component{
        this.props.submitForm(user);
    };
 
+   // this.props.navLink will be added soon  
+
    render (){
        return (
            <div className="session-form-container">
                <form onSubmit={this.handleSubmit}>
-               <h1>{this.props.form}</h1>
-
+               <h1 className="form-name">{this.props.form}</h1>
+               {this.renderErrors()}
+               <input type="text" 
+               value={this.state.email}
+               onChange={this.update('email')} 
+               className="input-email" 
+               placeholder="  Email" />
+               <br/>
+               <input type="password"
+               value={this.state.password} 
+               onChange={this.update('password')} 
+               className="input-password" 
+               placeholder="  Password"/>
+               <br/>
+               <button className="submit-button">{this.props.formType}</button>
                </form>
            </div>
        )
