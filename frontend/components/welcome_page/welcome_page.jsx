@@ -18,7 +18,7 @@ class WelcomePage extends React.Component {
            <div>
              <div className="wp-container">
              <div className="header-container">
-               <div className="catflix">CATFLIX</div>
+               <Link to="/" className="catflix">CATFLIX</Link>
                <Link className="login-link" to="/login">Sign In</Link>
              </div>
                <div className="inner-container">

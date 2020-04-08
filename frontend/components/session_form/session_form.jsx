@@ -6,35 +6,110 @@ class SessionForm extends React.Component{
        super(props);
        this.state = {
           email: '',
-          password: ''
-       }
+          password: '', 
+          errors: {
+             email_hover: false,
+             password_hover: false,
+             email_blank: false,
+             password_blank: false
+         }
+        }
        this.handleSubmit = this.handleSubmit.bind(this);
+       this.updateEmail = this.updateEmail.bind(this);
+       this.updatePassword = this.updatePassword.bind(this);
    };
 
    componentDidMount() {
        this.props.deleteErrors(this.props.errors);
    }
-
-   update(field) {
-       return e => this.setState({
-           [field]: e.currentTarget.value
-       })
-   };
-
-   renderErrors() {
-       const errorsLi = this.props.errors.map((error,i) => {
-           return (
-               <li className="error-lists" key={`error-${i}`}>
-                  {error}
-               </li>
-           )
+   focusField(field) {
+       let value;
+       return () => this.setState({
+           [field]: !(this.state.errors[field])
        });
-       return (
-           <ul>
-              {errorsLi}
-           </ul>
-       )
    };
+
+   blurField(field) {
+       let hoverValue = field === "password" ? "password_hover" : "email_hover";
+       let blankValue = field === "password" ? "password_blank" : "email_blank";
+
+       return (e) => {
+           // email or password
+           if (this.state.field === "") {
+              return this.setState({
+                   errors: {  
+                   [hoverValue]: !(this.state.errors[hoverValue]),
+                   [blankValue]: true 
+                  }
+                });
+           } else if (field === "password" && this.state.password.length < 4 ) {
+              return  this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: true 
+                   }
+               });        
+           } 
+           else if (field === "email" && this.state.email.length < 1 ){
+              return this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: true 
+                   }
+               });
+           } else {
+               return this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: false
+                   }
+               });
+           }
+       }
+   }
+
+   updateEmail(e) {
+       if (e.target.value.length < 1 ) {
+           return ( 
+           this.setState({
+               email: e.target.value,
+               password: this.state.password,
+               errors: {
+                   email_blank: true
+               }
+           }));
+       } else {
+           return (
+           this.setState({
+               email: e.target.value,
+               password: this.state.password,
+               errors: {
+                   email_blank: false
+               }
+           })
+           );
+       }
+   }
+
+   updatePassword(e) {
+       if (e.target.value.length < 4 ) {
+          return this.setState({
+               email: this.state.email,
+               password: e.target.value,
+               errors: {
+                   password_blank: true
+               }
+           });
+       } else {
+           return this.setState({
+               email: this.state.email,
+               password: e.target.value,
+               errors: {
+                   password_blank: false 
+               }
+           });
+       }
+   }
    
    handleSubmit(e) {
        e.preventDefault();
@@ -47,24 +122,48 @@ class SessionForm extends React.Component{
    };
 
    render (){
+       let invalidCredentials = this.props.errors.user ? (
+           <div className="invalid-credentials-error">
+               {this.props.errors.user}
+           </div>) : ''
+
+        let emailError = this.state.errors.email_blank ? <div 
+        className="error">Please enter a valid email.</div> : "";
+        let passwordError = this.state.errors.password_blank ? <div
+        className="error">Your password must contain between 4 and 60 characters.</div> : "";
+
+        let signupEmailError = this.props.errors.email ? <span className="error">{this.props.errors.email}</span> : "";
+        let signupPasswordError = this.props.errors.password ? <span className="error">{this.props.errors.password}</span> : "";
+
+       let emailInputClass = this.state.errors.email_blank ? "input-email input-error" : "input-email";
+       let passwordInputClass = this.state.errors.password_blank ? "input-password input-error" : "input-password";
+
        return (
            <div className="session-form-container">  
-               <div className="catflix">CATFLIX</div>    
                <form className="modal-form" onSubmit={this.handleSubmit}>
-                <div className="contents">
+               <div className="contents">
                <h1 className="form-name">{this.props.formType}</h1>
-               {this.renderErrors()}
-               <input type="text" 
-               value={this.state.email}
-               onChange={this.update('email')} 
-               className="input-email" 
-               placeholder="  Email" />
+               { invalidCredentials }
+
+                <input type="email"
+                value={this.state.email}
+                onChange={this.updateEmail}
+                onFocus={this.focusField("email_hover")}
+                onBlur={this.blurField("email")}
+                className={emailInputClass}
+                placeholder="  Email" />
+               <br/>
+               {signupEmailError || emailError }
                <br/>
                <input type="password"
                value={this.state.password} 
-               onChange={this.update('password')} 
-               className="input-password" 
+               onChange={this.updatePassword}
+               onFocus={this.focusField("password_hover")}
+               onBlur={this.blurField("password")} 
+               className={passwordInputClass} 
                placeholder="  Password"/>
+               <br/>
+               {signupPasswordError || passwordError }
                <br/>
                <button className="submit-button">{this.props.formType}</button>
                    <div className="navlink-line">

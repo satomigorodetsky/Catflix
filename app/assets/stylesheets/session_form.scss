@@ -49,7 +49,11 @@ h1 {
 }
 
 .input-email {
-  margin-top: 20px;
+  margin-top: 35px;
+}
+
+.input-password {
+  margin-top: 5px;
 }
 
 .navlink-line {
@@ -99,3 +103,24 @@ input, select, textarea{
 .navlink-comment {
   color: #737373;
 }
+
+.input-error {
+  color: orange;
+  // font-weight: bold;
+}
+
+.error {
+  position: relative;
+  left: 20px;
+  color: orange;
+  font-size: 12.5px;
+
+}
+
+.invalid-credentials-error {
+  color: orange;
+  font-weight: bold;
+  position: relative;
+  top: 5px;
+}
+
