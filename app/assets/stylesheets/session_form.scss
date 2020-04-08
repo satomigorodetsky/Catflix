@@ -35,7 +35,7 @@ h1 {
     color: white;
 }
 ::placeholder {
-    color: rgb(189, 189, 189);
+    color: #8c8c8c;
 }
 
 .input-email, .input-password {
@@ -45,7 +45,7 @@ h1 {
   height: 30px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(100, 100, 100);
+  background-color: #333;
 }
 
 .input-email {
@@ -79,19 +79,23 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
    display: block;
   margin: 0 auto;
-  width: 200px;
-  height: 30px;
+  width: 220px;
+  height: 40px;
   border: none;
   border-radius: 5px;
   color: white;
   background-color: red;
   margin-top: 30px;
-
+  font-size: 15px;
 }
 
 input, select, textarea{
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    font-size: 15px;
     padding: 5px 15px;
+    color: white;
 }
 
+.navlink-comment {
+  color: #737373;
+}

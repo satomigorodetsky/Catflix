@@ -8,8 +8,8 @@ class WelcomePage extends React.Component {
    };
 
    handleDemoLogin(e) {
-       const user = {email:"garfield1@gmail.com", password: "password" }
        e.preventDefault();
+       const user = {email:"garfield1@gmail.com", password: "password" }
        this.props.login(user);
    };
 
@@ -22,7 +22,8 @@ class WelcomePage extends React.Component {
                <Link className="login-link" to="/login">Sign In</Link>
              </div>
                <div className="inner-container">
-                <h1 className="wp-h1">Unlimited cute cat movies, TV shows, and more.</h1>
+               <h1 className="wp-h1">Unlimited cute cat movies, TV </h1>
+               <h1 className="wp-h1"> shows, and more.</h1>
                 <h3 className="wp-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
                 <button className="demo-button" onClick={this.handleDemoLogin}>TRY DEMO FREE</button>
                </div>

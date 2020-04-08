@@ -12,7 +12,6 @@ class SessionForm extends React.Component{
    };
 
    componentDidMount() {
-       debugger
        this.props.deleteErrors(this.props.errors);
    }
 
@@ -38,7 +37,6 @@ class SessionForm extends React.Component{
    };
    
    handleSubmit(e) {
-       debugger
        e.preventDefault();
        const user = Object.assign({},this.state);
        this.props.submitForm(user)
@@ -46,11 +44,9 @@ class SessionForm extends React.Component{
            email: '',
            password: ''
        })
-  
    };
 
    render (){
-       debugger
        return (
            <div className="session-form-container">  
                <div className="catflix">CATFLIX</div>    

@@ -3,7 +3,6 @@ import NavBarContainer from '../navbar/navbar_container';
 
 class VideoIndex extends React.Component {
     render() {
-        debugger
         return (
             <div>
                 <header>
