@@ -140,6 +140,7 @@ class SessionForm extends React.Component{
 
        return (
            <div className="session-form-container">  
+               <div className="catflix">CATFLIX</div>
                <form className="modal-form" onSubmit={this.handleSubmit}>
                <div className="contents">
                <h1 className="form-name">{this.props.formType}</h1>
