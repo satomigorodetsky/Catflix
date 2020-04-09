@@ -15,7 +15,8 @@ const mstp = (state) => {
 const mdtp = (dispatch) => {
     return {
       submitForm: (user) => dispatch(login(user)),
-      deleteErrors: (errors) => dispatch(deleteErrors(errors))
+      deleteErrors: (errors) => dispatch(deleteErrors(errors)),
+      login: (user) => dispatch(login(user))
     }
 };
 

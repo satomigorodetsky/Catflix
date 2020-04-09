@@ -1,7 +1,6 @@
-require "valid_email"
-
 class User < ApplicationRecord
     #fivaper 
+    validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
     validates :email, presence: true, uniqueness: true
     validates :password, length: { :within => 4..60 , allow_nil: true }
     validates :password_digest, presence: true

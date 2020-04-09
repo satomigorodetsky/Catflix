@@ -27,6 +27,14 @@ class WelcomePage extends React.Component {
                 <h3 className="wp-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
                 <button className="demo-button" onClick={this.handleDemoLogin}>TRY DEMO FREE</button>
                </div>
+              <div className="footer-wp-container">
+               <h3 className="question">Questions? Contact me.</h3>
+               <div className="footer-wp-links">
+               <a className="github" href="https://github.com/Sokada101">GitHub</a>
+               <a href="https://www.linkedin.com/in/satomiokada/">LinkedIn</a>
+               <a href="https://brooklynanimalaction.org/">SaveCats</a>
+               </div>
+             </div>
              </div>
            </div>
        )

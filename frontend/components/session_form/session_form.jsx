@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component{
    constructor(props) {
@@ -17,6 +17,7 @@ class SessionForm extends React.Component{
        this.handleSubmit = this.handleSubmit.bind(this);
        this.updateEmail = this.updateEmail.bind(this);
        this.updatePassword = this.updatePassword.bind(this);
+       this.handleDemoLogin = this.handleDemoLogin.bind(this);
    };
 
    componentDidMount() {
@@ -121,6 +122,12 @@ class SessionForm extends React.Component{
        })
    };
 
+    handleDemoLogin(e) {
+        e.preventDefault();
+        const user = { email: "garfield1@gmail.com", password: "password" }
+        this.props.login(user);
+    };
+
    render (){
        let invalidCredentials = this.props.errors.user ? (
            <div className="invalid-credentials-error">
@@ -139,14 +146,19 @@ class SessionForm extends React.Component{
        let passwordInputClass = this.state.errors.password_blank ? "input-password input-error" : "input-password";
 
        return (
+           <div>
            <div className="session-form-container">  
-               <div className="catflix">CATFLIX</div>
+           <div className="header-container">
+            <Link className="catflix-session-form" to="/">CATFLIX</Link>
+            <button className="demo-button-session" onClick={this.handleDemoLogin}>TRY DEMO</button>
+            </div>
+
                <form className="modal-form" onSubmit={this.handleSubmit}>
                <div className="contents">
                <h1 className="form-name">{this.props.formType}</h1>
                { invalidCredentials }
 
-                <input type="email"
+                <input type="text"
                 value={this.state.email}
                 onChange={this.updateEmail}
                 onFocus={this.focusField("email_hover")}
@@ -172,7 +184,15 @@ class SessionForm extends React.Component{
                    </div> 
                 </div>
                </form>
-              
+                   <div className="footer-session-container">
+                       <h3 className="question" >Questions? Contact me.</h3>          
+                      <div className="footer-session-links">
+                       <a className="github" href="https://github.com/Sokada101">GitHub</a>
+                       <a href="https://www.linkedin.com/in/satomiokada/">LinkedIn</a>
+                       <a href="https://brooklynanimalaction.org/">SaveCats</a>
+                       </div>
+                   </div>
+           </div>
            </div>
        )
    }

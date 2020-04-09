@@ -12,7 +12,11 @@ const sessionErrorsReducer = (state = {}, action) => {
            return {};
        case RECEIVE_SESSION_ERRORS:
            let allErrors = {};
-
+           if (!action.errors) {
+               return (
+                   action.errors = ["Email is invalid"]
+               )
+           }
            action.errors.forEach(err => {
                if (err.startsWith("Email")) {
                    merge(allErrors, { email: err })

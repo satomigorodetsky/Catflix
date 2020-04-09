@@ -533,6 +533,9 @@ var mdtp = function mdtp(dispatch) {
     },
     deleteErrors: function deleteErrors(errors) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["deleteErrors"])(errors));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -604,6 +607,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateEmail = _this.updateEmail.bind(_assertThisInitialized(_this));
     _this.updatePassword = _this.updatePassword.bind(_assertThisInitialized(_this));
+    _this.handleDemoLogin = _this.handleDemoLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -712,6 +716,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handleDemoLogin",
+    value: function handleDemoLogin(e) {
+      e.preventDefault();
+      var user = {
+        email: "garfield1@gmail.com",
+        password: "password"
+      };
+      this.props.login(user);
+    }
+  }, {
     key: "render",
     value: function render() {
       var invalidCredentials = this.props.errors.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -731,11 +745,17 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, this.props.errors.password) : "";
       var emailInputClass = this.state.errors.email_blank ? "input-email input-error" : "input-email";
       var passwordInputClass = this.state.errors.password_blank ? "input-password input-error" : "input-password";
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "catflix"
-      }, "CATFLIX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "header-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "catflix-session-form",
+        to: "/"
+      }, "CATFLIX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "demo-button-session",
+        onClick: this.handleDemoLogin
+      }, "TRY DEMO")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "modal-form",
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -743,7 +763,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "form-name"
       }, this.props.formType), invalidCredentials, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
+        type: "text",
         value: this.state.email,
         onChange: this.updateEmail,
         onFocus: this.focusField("email_hover"),
@@ -762,7 +782,20 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "submit-button"
       }, this.props.formType), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navlink-line"
-      }, this.props.navLink))));
+      }, this.props.navLink))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-session-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "question"
+      }, "Questions? Contact me."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-session-links"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "github",
+        href: "https://github.com/Sokada101"
+      }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/satomiokada/"
+      }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://brooklynanimalaction.org/"
+      }, "SaveCats")))));
     }
   }]);
 
@@ -815,6 +848,9 @@ var mdtp = function mdtp(dispatch) {
     },
     deleteErrors: function deleteErrors(errors) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["deleteErrors"])(errors));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -908,7 +944,20 @@ var WelcomePage = /*#__PURE__*/function (_React$Component) {
       }, "Enjoy the cuteness anywhere. Watch anytime."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemoLogin
-      }, "TRY DEMO FREE"))));
+      }, "TRY DEMO FREE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-wp-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "question"
+      }, "Questions? Contact me."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-wp-links"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "github",
+        href: "https://github.com/Sokada101"
+      }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/satomiokada/"
+      }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://brooklynanimalaction.org/"
+      }, "SaveCats")))));
     }
   }]);
 
@@ -1043,6 +1092,11 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
       var allErrors = {};
+
+      if (!action.errors) {
+        return action.errors = ["Email is invalid"];
+      }
+
       action.errors.forEach(function (err) {
         if (err.startsWith("Email")) {
           Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])(allErrors, {

@@ -2,7 +2,7 @@
  font-family: Arial, Helvetica, sans-serif;
  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.73)),image-url('wp_back.jpg');
  width: 100%;
- height: 1800px;
+ height: 1150px;
  margin: 0;
  padding: 0;
  position: relative;
@@ -10,13 +10,23 @@
  background-repeat: no-repeat;
 } 
 
+.catflix-session-form {
+  color:red;
+  position: relative;
+  top: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 45px;
+  text-decoration: none;
+  margin-left: 100px;
+}
+
 .modal-form{  
   position: absolute;
   top: 100px;
   left: 50%;
   margin-left: -220px;
-  width: 360px;
-  height: 500px;
+  width: 450px;
+  height: 650px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.75);
   z-index: 3;
@@ -41,19 +51,15 @@ h1 {
 .input-email, .input-password {
   display: block;
   margin: 0 auto;
-  width: 200px;
-  height: 30px;
+  width: 320px;
+  height: 50px;
   border: none;
   border-radius: 5px;
   background-color: #333;
 }
 
 .input-email {
-  margin-top: 35px;
-}
-
-.input-password {
-  margin-top: 5px;
+  margin-top: 44px;
 }
 
 .navlink-line {
@@ -83,14 +89,14 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
    display: block;
   margin: 0 auto;
-  width: 220px;
-  height: 40px;
+  width: 350px;
+  height: 60px;
   border: none;
   border-radius: 5px;
   color: white;
   background-color: red;
   margin-top: 30px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 input, select, textarea{
@@ -106,21 +112,70 @@ input, select, textarea{
 
 .input-error {
   color: orange;
-  // font-weight: bold;
 }
 
 .error {
   position: relative;
-  left: 20px;
+  left: 10px;
   color: orange;
   font-size: 12.5px;
-
+  bottom: 12px;
 }
 
 .invalid-credentials-error {
   color: orange;
   font-weight: bold;
   position: relative;
-  top: 5px;
+  top: 14px;
 }
 
+.header-container {
+  display: flex;
+}
+
+.demo-button-session {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  width: 120px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  margin-top: 44px;
+  margin-right: 100px;
+}
+
+.footer-session-container {
+  height: 280px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.footer-session-links a {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  color: #737373;
+  text-decoration: none;
+  margin-left: 250px;
+  padding: 5px;
+  font-weight: lighter;
+}
+
+.github {
+  margin-top: 25px;
+}
+
+
+.question {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: #737373;
+  text-decoration: none;
+  margin-left: 254px;
+  margin-top: 50px;
+}
