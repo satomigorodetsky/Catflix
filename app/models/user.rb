@@ -17,6 +17,13 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :session_token, presence: true, uniqueness: true
 
+    has_many :list_videos,
+       dependent: :destroy
+    
+    has_many :videos,
+       through: :list_videos,
+       source: :video
+
     attr_reader :password
 
     after_initialize :ensure_session_token

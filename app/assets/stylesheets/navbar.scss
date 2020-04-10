@@ -1,0 +1,91 @@
+.navbar-container {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 125px;
+  background: rgba(0, 0, 0, 0.75);
+    display: flex;
+}
+
+
+
+.catflix-logo {
+  color:red;
+  position: relative;
+  top: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 45px;
+  text-decoration: none;
+  margin-left: 100px;
+
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #e5e5e5;   
+  position: relative;
+  top: 55px;
+  padding: 10px;
+}
+
+.navbar-links a:first-child {
+    padding-left: 30px;
+}
+
+
+.navbar-links a:hover {
+   color: #d0cdcd;   
+
+}
+
+.garfield-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px solid black;
+}
+
+// .garfield-logo:hover {
+//  border: black 2px solid;
+// }
+
+.dropdown-trigger {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.75);
+    right: 45px;
+    top: 40px;
+}
+
+.dropdown-dances {
+   display: none;
+   position: absolute;
+   min-width: 150px;
+   height: 270px;
+   background: rgba(0, 0, 0, 0.75);
+   top: 50px;
+   left: -140px;
+   border-radius: 10px;
+  border: 1px solid #000;
+  padding: 20px;
+}
+
+.dropdown-trigger:hover > .dropdown-dances {
+    display: block;
+}
+
+.dropdown-container {
+    display: block;
+    justify-content: right;
+}
+
+.dropdown-dances > li {
+   color: #e5e5e5;
+   padding: 20px;
+}
+
+.dropdown-dances > li:last-child {
+    text-decoration: none;
+}
+
+.dropdown-dances >li:last-child:hover {
+   cursor: pointer;
+}

@@ -9,7 +9,7 @@ class WelcomePage extends React.Component {
 
    handleDemoLogin(e) {
        e.preventDefault();
-       const user = {email:"garfield1@gmail.com", password: "password" }
+       const user = {email:"garfield1@cat.com", password: "password" }
        this.props.login(user);
    };
 

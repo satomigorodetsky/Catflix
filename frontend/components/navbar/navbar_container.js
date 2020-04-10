@@ -6,7 +6,7 @@ import NavBar from './navbar';
 const mstp = (state) => {
     return {
         // return as currentusers state like this {id: 9, email: "email@email"}
-        currentUser: state.entities.users[state.session.currentUser.id]
+        currentUser: state.entities.users[state.session.currentUser]
     }
 };
 
