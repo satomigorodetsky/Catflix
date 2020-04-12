@@ -1,16 +1,15 @@
 .navbar-container {
     font-family: Arial, Helvetica, sans-serif;
-    height: 125px;
-  background: rgba(0, 0, 0, 0.75);
+    height: 80px;
+    background: black;
     display: flex;
+    z-index: 3;
 }
-
-
 
 .catflix-logo {
   color:red;
   position: relative;
-  top: 30px;
+  top: 15px;
   font-family: 'Oswald', sans-serif;
   font-size: 45px;
   text-decoration: none;
@@ -22,7 +21,7 @@
   text-decoration: none;
   color: #e5e5e5;   
   position: relative;
-  top: 55px;
+  top: 38px;
   padding: 10px;
 }
 
@@ -40,11 +39,9 @@
     width: 50px;
     height: 50px;
     border-radius: 4px solid black;
+    
 }
 
-// .garfield-logo:hover {
-//  border: black 2px solid;
-// }
 
 .dropdown-trigger {
     width: 50px;
@@ -52,7 +49,7 @@
     position: absolute;
     background: rgba(0, 0, 0, 0.75);
     right: 45px;
-    top: 40px;
+    top: 20px;
 }
 
 .dropdown-dances {
@@ -66,6 +63,8 @@
    border-radius: 10px;
   border: 1px solid #000;
   padding: 20px;
+      z-index: 3;
+
 }
 
 .dropdown-trigger:hover > .dropdown-dances {
@@ -88,4 +87,7 @@
 
 .dropdown-dances >li:last-child:hover {
    cursor: pointer;
+}
+
+.whole-page {
 }

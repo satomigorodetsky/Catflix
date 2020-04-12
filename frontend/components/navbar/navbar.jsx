@@ -25,7 +25,6 @@ class NavBar extends React.Component {
                 <Link to="/browse/genre/movies">Movies</Link>
                 <Link to="/browse/myList">My List</Link>
             </div>
-           
             <div className="dropdown-trigger">
             <img className="garfield-logo"
               src={window.garfieldURL} onMouseEnter={() => this.setState({ showDropdown: true })}>
