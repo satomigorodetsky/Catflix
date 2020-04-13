@@ -1,9 +1,11 @@
 .navbar-container {
     font-family: Arial, Helvetica, sans-serif;
     height: 80px;
+    width: 100%;
     background: black;
     display: flex;
     z-index: 3;
+    top: 0;
 }
 
 .catflix-logo {
@@ -14,7 +16,7 @@
   font-size: 45px;
   text-decoration: none;
   margin-left: 100px;
-
+  
 }
 
 .navbar-links a {
@@ -87,7 +89,4 @@
 
 .dropdown-dances >li:last-child:hover {
    cursor: pointer;
-}
-
-.whole-page {
 }

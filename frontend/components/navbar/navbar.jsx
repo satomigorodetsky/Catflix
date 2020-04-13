@@ -12,10 +12,6 @@ class NavBar extends React.Component {
 
   
   render () {
-    // let dropdown = this.state.showDropdown ? <DropDown currentUser={this.props.currentUser} 
-    // hideDropdown={() => this.setState({showDropdown: false})} 
-    // logout={this.props.logout} /> : ""
-
       return (
           <div className="navbar-container"> 
           <div className="catflix-logo" to="/">CATFLIX</div>  
@@ -39,12 +35,3 @@ class NavBar extends React.Component {
 };
 
 export default NavBar;
-
-          {/* <img className="dropdown-img"
-            src={window.garfieldURL}
-            onMouseEnter={() => this.setState({ showDropdown: true })}>
-          </img>
-          <ul className="dropdown-lists">
-            <button onClick={() => this.props.logout()}>Sign out of Catflix</button>
-          </ul>
-        </div> */}

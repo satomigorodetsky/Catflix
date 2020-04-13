@@ -1,31 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 class VideoMain extends React.Component {
+
    
     render () {
-        const { videos } = this.props;
-        const allVideos = videos.map((video, i) => {
-                return (
-                    <div className="videodetail-video">
-                        <p className="video-detail p-title">{video.title}</p>
-                        <p className="video-detail p-year">{video.year}</p>
-                        <p className="video-detail p-description">{video.description}</p>
-                        <Link to="browse/2">Play</Link>
-                        <video className="video" muted autoPlay poster="">
-                            <source src={video.url}
-                            >
-                            </source>
-¥                        </video>
-              
-                    </div>
-                )
-            })
+        const {videos} = this.props
+        // const allVideos = .videos.map((video,i) => {
+
+        //      video.id
+        // })
         return (
-           <div className="main-video">
-             {allVideos[0]}
-           </div>
-        )
-    }
+            <div className="main-video-container">
+                <div className="detail-container">
+                <p className="bl main-video-title">Cats</p>
+                <p className="bl main-video-year">2019</p>
+                <p className="bl main-video-description">A tribe of cats called the Jellicles must decide yearly which one will ascend to the Heaviside Layer and come back to a new Jellicle life.</p>
+                <Link to="/browse/120" className="bl">Play</Link>
+                </div>
+                <video className="main-video" muted autoPlay loop>
+                    <source src="https://catflix-dev.s3.amazonaws.com/cats2019.mp4" type="video/mp4"></source>
+                        Your browser does not support the video tag.
+                    </video>
+            </div>
+        )}
 };
 
 export default VideoMain;

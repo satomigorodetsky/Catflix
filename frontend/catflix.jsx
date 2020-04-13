@@ -4,6 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 // testing imports
+import { fetchVideo } from './util/video_api_util';
 // testing imports 
 
 document.addEventListener("DOMContentLoaded",() => {
@@ -23,6 +24,9 @@ document.addEventListener("DOMContentLoaded",() => {
 
    const root = document.getElementById("root");
    ReactDOM.render(<Root store={store} />, root)
+
    // testing //
+   window.fetchVideo = fetchVideo;
+   window.dispatch = store.dispatch;
    // testing //
 });

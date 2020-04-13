@@ -3,7 +3,6 @@ import React from 'react';
 class Footer extends React.Component {
    render() {
        return (
-     <footer id="footer">
                <div className="footer-container">
                    <h3 className="footer-question" >Questions? Contact me.</h3>
                    <div className="footer-links">
@@ -12,7 +11,6 @@ class Footer extends React.Component {
                        <a href="https://brooklynanimalaction.org/">SaveCats</a>
                    </div>
                </div>
-    </footer>
        )}
 };
 

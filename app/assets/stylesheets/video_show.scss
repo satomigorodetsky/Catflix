@@ -1,0 +1,20 @@
+.show-page-container {
+    background-color: black;
+}
+
+.show-page-video-container {
+   top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+  background-color: black;
+  color: white;
+   position: relative; 
+}
+
+.show-page-video {
+  width: 100%; 
+  height: auto; 
+  outline: none;
+}
