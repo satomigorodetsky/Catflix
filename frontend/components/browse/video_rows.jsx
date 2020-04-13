@@ -11,13 +11,16 @@ class VideoRows extends React.Component {
 
     render () {
         const { videos } = this.props;
-    const allTVshows = videos.map((video, i) => {
+        
+        const allTVshows = videos.map((video, i) => {
         if ( video.video_type === "tv_show") {
         return (
             <div className="video-container" key={i}>
-                <img src={video.thumbnail} alt={video.title} className="flex-row" />
+                <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload poster={video.thumbnail}
+                    onMouseOut={event => event.currentTarget.pause()} ></video>
+                {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
                 <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                {/* <video className="video-row" controls src={video.url} placeholder={video.thumbnail} preload></video> */}
+                {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
             </div>
         )
     }})
@@ -26,8 +29,10 @@ class VideoRows extends React.Component {
             if (video.video_type === "movie") {
                 return (
                     <div className="video-container" key={i}>
-                        <img src={video.thumbnail} alt={video.title} className="flex-row"/>
-                        <Link to={`/browse/${video.id}`} className="bl">Play</Link>
+                        <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload poster={video.thumbnail}
+                            onMouseOut={event => event.currentTarget.pause()} ></video>
+                        {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
+                        <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
                         {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
                     </div>
                 )

@@ -34,6 +34,7 @@
     padding: 20px;
     right: 0;
     position: relative;
+
 }
 
 .video-container a {
@@ -73,4 +74,9 @@
 
 .flex-row:hover {
   transform: scale(1.1); 
+}
+
+.video-detail {
+  color: red;
+
 }

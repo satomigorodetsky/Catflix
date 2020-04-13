@@ -483,10 +483,11 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
   _createClass(VideoMain, [{
     key: "render",
     value: function render() {
-      var videos = this.props.videos; // const allVideos = .videos.map((video,i) => {
-      //      video.id
-      // })
-
+      var videos = this.props.videos;
+      var allVideos = videos.map(function (video, i) {
+        return video.id;
+      });
+      var videoId = allVideos[0];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-video-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -498,7 +499,7 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
       }, "2019"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "bl main-video-description"
       }, "A tribe of cats called the Jellicles must decide yearly which one will ascend to the Heaviside Layer and come back to a new Jellicle life."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/browse/120",
+        to: "/browse/".concat(videoId),
         className: "bl"
       }, "Play")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
         className: "main-video",
@@ -611,10 +612,17 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "video-container",
             key: i
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: video.thumbnail,
-            alt: video.title,
-            className: "flex-row"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+            className: "flex-row",
+            src: video.url,
+            onMouseEnter: function onMouseEnter(event) {
+              return event.currentTarget.play();
+            },
+            preload: true,
+            poster: video.thumbnail,
+            onMouseOut: function onMouseOut(event) {
+              return event.currentTarget.pause();
+            }
           }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "bl"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -627,14 +635,22 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "video-container",
             key: i
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: video.thumbnail,
-            alt: video.title,
-            className: "flex-row"
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/browse/".concat(video.id),
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+            className: "flex-row",
+            src: video.url,
+            onMouseEnter: function onMouseEnter(event) {
+              return event.currentTarget.play();
+            },
+            preload: true,
+            poster: video.thumbnail,
+            onMouseOut: function onMouseOut(event) {
+              return event.currentTarget.pause();
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "bl"
-          }, "Play"));
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/browse/".concat(video.id)
+          }, "Play")));
         }
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
