@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_122643) do
+ActiveRecord::Schema.define(version: 2020_04_13_235642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_122643) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  create_table "video_genres", force: :cascade do |t|
+    t.integer "video_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_video_genres_on_genre_id"
+    t.index ["video_id"], name: "index_video_genres_on_video_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -71,6 +80,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_122643) do
     t.integer "views", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "genre"
+    t.index ["genre"], name: "index_videos_on_genre"
     t.index ["title"], name: "index_videos_on_title"
     t.index ["video_type"], name: "index_videos_on_video_type"
   end

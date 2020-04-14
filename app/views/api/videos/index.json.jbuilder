@@ -3,3 +3,4 @@
        json.partial! 'api/videos/video', video: video 
      end 
    end 
+

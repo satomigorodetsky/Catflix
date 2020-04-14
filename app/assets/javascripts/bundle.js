@@ -618,7 +618,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
             onMouseEnter: function onMouseEnter(event) {
               return event.currentTarget.play();
             },
-            preload: true,
+            preload: "true",
             poster: video.thumbnail,
             onMouseOut: function onMouseOut(event) {
               return event.currentTarget.pause();
@@ -641,7 +641,57 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
             onMouseEnter: function onMouseEnter(event) {
               return event.currentTarget.play();
             },
-            preload: true,
+            preload: "true",
+            poster: video.thumbnail,
+            onMouseOut: function onMouseOut(event) {
+              return event.currentTarget.pause();
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "bl"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/browse/".concat(video.id)
+          }, "Play")));
+        }
+      });
+      var allCartoons = videos.map(function (video, i) {
+        debugger;
+
+        if (video.genre === "Cartoon") {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "video-container",
+            key: i
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+            className: "flex-row",
+            src: video.url,
+            onMouseEnter: function onMouseEnter(event) {
+              return event.currentTarget.play();
+            },
+            preload: "true",
+            poster: video.thumbnail,
+            onMouseOut: function onMouseOut(event) {
+              return event.currentTarget.pause();
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "bl"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/browse/".concat(video.id)
+          }, "Play")));
+        }
+      });
+      var allComedy = videos.map(function (video, i) {
+        debugger;
+
+        if (video.genre === "Comedy") {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "video-container",
+            key: i
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+            className: "flex-row",
+            src: video.url,
+            onMouseEnter: function onMouseEnter(event) {
+              return event.currentTarget.play();
+            },
+            preload: "true",
             poster: video.thumbnail,
             onMouseOut: function onMouseOut(event) {
               return event.currentTarget.pause();
@@ -663,7 +713,15 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
         className: "category"
       }, "Movies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-index"
-      }, allMovies));
+      }, allMovies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Cartoon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-index"
+      }, allCartoons), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-index"
+      }, allComedy));
     }
   }]);
 
@@ -691,8 +749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mstp = function mstp(state, ownProps) {
   return {
-    videos: Object.values(state.entities.videos) // videoLink: state.entities.videos[ownProps.match.params.videoId]
-
+    videos: Object.values(state.entities.videos)
   };
 };
 

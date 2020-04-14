@@ -13,10 +13,16 @@
 #  updated_at  :datetime         not null
 #
 class Video < ApplicationRecord
-    validates :title, :description,:year, :video_type, :duration, :views, presence: true
+    validates :title, :description,:year, :video_type, :duration, :views, :genre, presence: true
 
       has_one_attached :url
       has_one_attached :thumbnail
+
+      has_many :video_genres
+
+      has_many :genres, 
+        through: :video_genres,
+        source: :genre
     
     has_many :list_videos,
        dependent: :destroy 

@@ -1,15 +1,18 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: video_genres
 #
 #  id         :bigint           not null, primary key
-#  name       :string           not null
+#  video_id   :integer          not null
+#  genre_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 one:
-  name: MyString
+  video_id: 1
+  genre_id: 1
 
 two:
-  name: MyString
+  video_id: 1
+  genre_id: 1

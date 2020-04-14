@@ -1,4 +1,4 @@
-json.extract! video, :id, :title, :description, :video_type, :duration, :views, :year
+json.extract! video, :id, :title, :description, :video_type, :duration, :views, :year, :genre
 
 if (video.thumbnail.attached?)
   json.thumbnail url_for(video.thumbnail)
@@ -11,5 +11,7 @@ if (video.url.attached?)
 elsif
   json.url "404 NOT FOUND"
 end
+
+
 
 
