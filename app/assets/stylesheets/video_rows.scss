@@ -12,10 +12,9 @@
 
 .video-index {
   display: flex;
-  // flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items: left;
+  // justify-content: space-evenly;
 }
 
 
@@ -29,13 +28,14 @@
 
 .video-container {
     margin: 0;
-    width: calc(100% / 5);
+    width: calc(100% / 4);
     overflow: hidden;
-    padding: 20px;
+    padding: 5px;
     right: 0;
     position: relative;
-
+    // display: flex;
 }
+
 
 .video-container a {
   font-family: Arial, Helvetica, sans-serif;
@@ -74,6 +74,7 @@
 
 .flex-row:hover {
   transform: scale(1.1); 
+  //  transform: translateX(25%); 
 }
 
 .video-detail {

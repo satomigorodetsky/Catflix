@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :list_videos, only: [:index, :create, :destroy]
 
     resources :videos, only: [:index, :show] do
+      collection do 
+        get 'search'
+      end 
     end 
 
   end 

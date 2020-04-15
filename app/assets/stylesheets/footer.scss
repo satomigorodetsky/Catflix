@@ -2,19 +2,21 @@
 .footer-container {
   height: 200px;
   width: 100%;
+  position: relative;
   bottom: 0;
   background:black;
 }
 
 .footer-links a {
   font-family: Arial, Helvetica, sans-serif;
-  display: flex;
+  display: block;
   justify-content: space-between;
   color: #737373;
   text-decoration: none;
   margin-left: 250px;
   padding: 5px;
   font-weight: lighter;
+  width: 1em;
 }
 
 

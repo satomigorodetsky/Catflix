@@ -17,8 +17,8 @@ class NavBar extends React.Component {
           <div className="catflix-logo" to="/">CATFLIX</div>  
             <div className="navbar-links">    
                 <Link to="/browse">Home</Link>
-                <Link to="/browse/genre/tvshows">TV Shows</Link>
-                <Link to="/browse/genre/movies">Movies</Link>
+                <Link to="/browse/tvshows">TV Shows</Link>
+                <Link to="/browse/movies">Movies</Link>
                 <Link to="/browse/myList">My List</Link>
             </div>
             <div className="dropdown-trigger">

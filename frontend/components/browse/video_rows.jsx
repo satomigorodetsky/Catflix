@@ -39,11 +39,10 @@ class VideoRows extends React.Component {
             }
         })
         const allCartoons = videos.map((video, i) => {
-            debugger
             if (video.genre === "Cartoon") {
                 return (
                     <div className="video-container" key={i}>
-                        <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
+                        <video muted className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
                             onMouseOut={event => event.currentTarget.pause()} ></video>
                         {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
                         <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
@@ -53,11 +52,10 @@ class VideoRows extends React.Component {
             }
         })
         const allComedy = videos.map((video, i) => {
-            debugger
             if (video.genre === "Comedy") {
                 return (
                     <div className="video-container" key={i}>
-                        <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
+                        <video muted className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
                             onMouseOut={event => event.currentTarget.pause()} ></video>
                         {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
                         <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
@@ -86,7 +84,7 @@ class VideoRows extends React.Component {
 
             <div className="category">Comedy</div>
             <div className="video-index">
-                {allComedy}
+            {allComedy}
             </div>
         </div>
     )

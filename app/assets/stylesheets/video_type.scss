@@ -1,0 +1,28 @@
+.video-type-container {
+      font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 100%;
+    bottom: 0;
+    // justify-content: space-evenly;
+} 
+
+.vt-video-index {
+    background-color: black;
+    margin-left: 7%;
+    padding-bottom: 300px;
+}
+
+.pathname {
+    font-size: 4em;
+    color: white;
+    padding-top: 2%;
+    margin-left: 7%;
+}
+
+.vt-video-index {
+    min-width: 100%;
+    min-height: 100%;
+}

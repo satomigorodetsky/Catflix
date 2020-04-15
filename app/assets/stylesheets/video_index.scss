@@ -7,7 +7,12 @@
   background-color: black;
   color: white;
    position: relative;
-}
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+  }
 
 .main-video {
   width: 100%; 
@@ -23,7 +28,7 @@
 
 .main-video-title {
     font-weight: bolder;
-    font-size: 2.5em;
+    font-size: 2.8em;
 }
 
 .main-video-year {
@@ -31,9 +36,9 @@
 }
 
 .main-video-description {
-    // font-size: 1.5em;
-    max-width: 55%;
-    max-height: 10%;
+    font-size: 1.5em;
+    max-width: 40%;
+    max-height: 20%;
 }
 
 .detail-container {
