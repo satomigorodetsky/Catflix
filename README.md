@@ -14,6 +14,7 @@ Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix
 
 
 ## User login/signup 
+
 ![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/user_auth.png)
 
 * Used session tokens in the backend and bootstrapping + protected/auth routes in the frontend.
@@ -59,6 +60,27 @@ Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix
    }
    
   ```
+## Display Videos
+
+* Users can hover over a video and see the preview of the video. 
+
+![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/preview.png)
 
 
 ## Search 
+
+* Checked URL path ```/search``` so that users can do another search right after search. 
+
+```javascript   handleSubmit(e) {
+    e.preventDefault();
+    this.props.history.push(`/search?keyword=${this.state.query}`);
+    this.setState({query: ''})
+
+    if (this.props.location.pathname === "/search" ) {
+          e.preventDefault();
+          this.props.searchVideos(this.state.query);
+          this.setState({ query: '' })
+    }
+  };```
+  
+  
