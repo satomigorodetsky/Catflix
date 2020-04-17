@@ -12,3 +12,17 @@ export const fetchVideo = (id) => {
     })
 };
 
+export const searchVideos = (query) => {
+    return $.ajax({
+        method: 'get',
+        url: '/api/videos/search',
+        data: { query_params: query }
+    })
+};
+
+export const fetchListVideos = () => {
+    return $.ajax({
+        method: 'get',
+        url: '/api/videos/mylist'
+    })
+}

@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 class VideoMain extends React.Component {
 
+    componentDidMount() {
+        this.props.fetchVideos();
+    }
+
+    componentWillUnmount () {
+        this.props.clearVideos();
+    }
+
    
     render () {
         const {videos} = this.props
@@ -15,7 +23,7 @@ class VideoMain extends React.Component {
                 <p className="bl main-video-description">{video.description}</p>
                     <Link to={`/browse/${video.id}`} className="bl">Play</Link>
                 </div>
-                <video className="main-video" muted autoPlay loop>
+                <video className="main-video" muted autoPlay loop key={video.url}>
                     <source src={video.url} type="video/mp4"></source>
                         Your browser does not support the video tag.
                     </video>

@@ -54,11 +54,13 @@ class VideoType extends React.Component {
                 <div className="video-index-container">
                 <div className="pathname">{pathname}</div>
 
-                    <div className="video-index">
-                        <div className="vt-video-index">
+                    <div className="video-index-video-type">
+                        {/* <div className="vt-video-index"> */}
                         {allvideos}
-                        </div>
+                        {/* </div> */}
                     </div>
+                    <div className="vt-video-index"></div>
+
 
                 </div>
                 <Footer />

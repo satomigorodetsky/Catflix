@@ -90,3 +90,37 @@
 .dropdown-dances >li:last-child:hover {
    cursor: pointer;
 }
+
+.searchbar-container {
+        position: absolute;
+    color: white;
+    top: 30px;
+    right: 150px;
+   font-size: 2em;
+   display: flex;
+   flex-direction: row;
+   padding: 5px;
+//    flex-direction: row;
+}
+
+.search-input {
+    color: black;
+    // max-width: 100px;
+    // min-height: 2%;
+}
+
+
+#search-icon {
+    height: 100%;
+    width: 100%;
+    padding-right: 10px;
+}
+
+.not-showing {
+    display: none;
+}
+
+.showing {
+    display:block;
+    padding-left: 10px;
+}

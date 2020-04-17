@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import VideoRows from './video_rows';
+import { addToMyList, removeFromMyList } from '../../actions/list_video_actions';
 
 const mstp = (state, ownProps) => {
     return {
@@ -9,6 +10,8 @@ const mstp = (state, ownProps) => {
 
 const mdtp = (dispatch) => {
     return {
+        addToMyList: (videoId) => dispatch(addToMyList(videoId)),
+        removeFromMyList: (videoId) => dispatch(removeFromMyList(videoId))
     }
 };
 

@@ -28,5 +28,6 @@ document.addEventListener("DOMContentLoaded",() => {
    // testing //
    window.fetchVideo = fetchVideo;
    window.dispatch = store.dispatch;
+   window.getState = store.getState;
    // testing //
 });

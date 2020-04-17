@@ -10,21 +10,8 @@ class VideoDetail extends React.Component {
       this.toggleMute = this.toggleMute.bind(this);
     }
 
-    toggleMute(e) {
-        e.preventDefault();
-
-        let videoEl = document.getElementsByClassName("main-video")[0];
-        this.setState({
-            muted: !this.state.muted
-        });
-
-        videoEl.muted = !videoEl.muted;
-    }
-
     render () {
         const { video } = this.props;
-        // let volumeButton = this.state.muted ? (<button onClick={this.toggleMute}>Mute</button>)
-        // : (<button onClick={this.toggleMute}>Unmute</button>)
         return (
             <div>
                 <div className="video-detail">

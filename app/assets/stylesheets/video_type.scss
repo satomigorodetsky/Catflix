@@ -11,7 +11,6 @@
 
 .vt-video-index {
     background-color: black;
-    margin-left: 7%;
     padding-bottom: 300px;
 }
 
@@ -25,4 +24,14 @@
 .vt-video-index {
     min-width: 100%;
     min-height: 100%;
+}
+
+.video-index-video-type {
+ display: flex;
+  flex-wrap: wrap;
+  align-items: left;
+  padding-left: 10%;
+  padding-bottom: 500px;
+    padding-top: 5%;
+
 }

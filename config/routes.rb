@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     resource :user, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :list_videos, only: [:index, :create, :destroy]
-
     resources :videos, only: [:index, :show] do
       collection do 
         get 'search'
+        get 'mylist'
       end 
     end 
 

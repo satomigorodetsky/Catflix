@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import VideoIndex from './video_index';
-import { fetchVideos } from '../../actions/video_actions';
+import { fetchVideos, clearVideos } from '../../actions/video_actions';
 
 const mstp = (state) => {
     return {
@@ -10,7 +10,8 @@ const mstp = (state) => {
 
 const mdtp = (dispatch) => {
     return {
-        fetchVideos: () => dispatch(fetchVideos())
+        fetchVideos: () => dispatch(fetchVideos()),
+        clearVideos: () => dispatch(clearVideos())
     }
 };
 
