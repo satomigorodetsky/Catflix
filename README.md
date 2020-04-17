@@ -1,24 +1,64 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# [Link to Catflix](https://catflix-app.herokuapp.com/#/)
 
-Things you may want to cover:
+## Basic Overview
+Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix can create accounts, search and stream videos. Catflix was created with React, Redux, and Rails. 
 
-* Ruby version
+## Features
 
-* System dependencies
+* User authentication 
+* Ability to watch videos from anywhere on the site. 
+* Ability to watch previews of videos on index page. 
+* Ability to search videos which searches the batabase based on title and/or genre matches.
 
-* Configuration
 
-* Database creation
+## User login/signup 
+![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/user_auth.png)
 
-* Database initialization
+* Used session tokens in the backend and bootstrapping + protected/auth routes in the frontend.
+* Users will be notified with correct errors if they left field blank or invalid inputs.
 
-* How to run the test suite
+```javascript  blurField(field) {
+       let hoverValue = field === "password" ? "password_hover" : "email_hover";
+       let blankValue = field === "password" ? "password_blank" : "email_blank";
 
-* Services (job queues, cache servers, search engines, etc.)
+       return (e) => {
+           // email or password
+           if (this.state.field === "") {
+              return this.setState({
+                   errors: {  
+                   [hoverValue]: !(this.state.errors[hoverValue]),
+                   [blankValue]: true 
+                  }
+                });
+           } else if (field === "password" && this.state.password.length < 4 ) {
+              return  this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: true 
+                   }
+               });        
+           } 
+           else if (field === "email" && this.state.email.length < 1 ){
+              return this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: true 
+                   }
+               });
+           } else {
+               return this.setState({
+                   errors: {
+                       [hoverValue]: !(this.state.errors[hoverValue]),
+                       [blankValue]: false
+                   }
+               });
+           }
+       }
+   }
+   
+  ```
 
-* Deployment instructions
 
-* ...
+## Search 
