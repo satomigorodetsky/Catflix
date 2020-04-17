@@ -25,7 +25,7 @@ class WelcomePage extends React.Component {
                <h1 className="wp-h1">Unlimited cute cat movies, TV </h1>
                <h1 className="wp-h1"> shows, and more.</h1>
                 <h3 className="wp-h3">Enjoy the cuteness anywhere. Watch anytime.</h3>
-                <button className="demo-button" onClick={this.handleDemoLogin}>TRY DEMO FREE</button>
+                <button className="demo-button" onClick={this.handleDemoLogin}>TRY A FREE DEMO</button>
                </div>
               <div className="footer-wp-container">
                <h3 className="question">Questions? Contact me.</h3>

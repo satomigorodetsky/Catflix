@@ -27,7 +27,7 @@ class VideoRows extends React.Component {
         const { addedToList } = this.state;
         const button = addedToList ? "Remove" : "Add";
         const allTVshows = videos.map((video, i) => {
-        if ( video.video_type === "tv_show") {
+        if ( video.video_type === "tv show") {
 
         return (
             <div className="video-container" key={i}>

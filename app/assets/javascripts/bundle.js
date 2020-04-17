@@ -613,8 +613,6 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "bl main-video-title"
         }, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "bl main-video-year"
-        }, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "bl main-video-description"
         }, video.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/browse/".concat(video.id),
@@ -767,7 +765,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var addedToList = this.state.addedToList;
       var button = addedToList ? "Remove" : "Add";
       var allTVshows = videos.map(function (video, i) {
-        if (video.video_type === "tv_show") {
+        if (video.video_type === "tv show") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "video-container",
             key: i
@@ -1226,7 +1224,7 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
 
       if (pathname === "TV Shows") {
         allvideos = videos.map(function (video, i) {
-          if (video.video_type === "tv_show") {
+          if (video.video_type === "tv show") {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               className: "video-container",
               key: i
@@ -2097,7 +2095,7 @@ var mstp = function mstp(state) {
     formType: 'Sign In',
     navLink: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "navlink-comment"
-    }, "New to Catflix?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    }, "New to Catflix? "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "navlink",
       to: "/signup"
     }, "Sign up now"))
@@ -2332,7 +2330,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, "CATFLIX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo-button-session",
         onClick: this.handleDemoLogin
-      }, "TRY DEMO")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "TRY A DEMO")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "modal-form",
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2411,10 +2409,10 @@ var mstp = function mstp(state) {
     formType: 'Sign Up',
     navLink: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "navlink-comment"
-    }, "Already have an account? "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    }, "Already have an account?  "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "navlink",
       to: "/login"
-    }, "Sign In"))
+    }, " Sign In"))
   };
 };
 
@@ -2521,7 +2519,7 @@ var WelcomePage = /*#__PURE__*/function (_React$Component) {
       }, "Enjoy the cuteness anywhere. Watch anytime."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "demo-button",
         onClick: this.handleDemoLogin
-      }, "TRY DEMO FREE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "TRY A FREE DEMO")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-wp-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "question"

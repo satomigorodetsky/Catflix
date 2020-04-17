@@ -150,7 +150,7 @@ class SessionForm extends React.Component{
            <div className="session-form-container">  
            <div className="header-container">
             <Link className="catflix-session-form" to="/">CATFLIX</Link>
-            <button className="demo-button-session" onClick={this.handleDemoLogin}>TRY DEMO</button>
+            <button className="demo-button-session" onClick={this.handleDemoLogin}>TRY A DEMO</button>
             </div>
 
                <form className="modal-form" onSubmit={this.handleSubmit}>

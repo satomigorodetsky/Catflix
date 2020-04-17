@@ -19,7 +19,6 @@ class VideoMain extends React.Component {
                 <span>
                 <div className="detail-container">
                 <p className="bl main-video-title">{video.title}</p>
-                <p className="bl main-video-year">{video.year}</p>
                 <p className="bl main-video-description">{video.description}</p>
                     <Link to={`/browse/${video.id}`} className="bl">Play</Link>
                 </div>

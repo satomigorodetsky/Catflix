@@ -21,7 +21,7 @@ class VideoType extends React.Component {
         let allvideos;
         if (pathname === "TV Shows") {
             allvideos = videos.map((video, i) => {
-            if (video.video_type === "tv_show") {
+            if (video.video_type === "tv show") {
                 return (
                     <div className="video-container" key={i}>
                         <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
