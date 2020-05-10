@@ -7,6 +7,7 @@ import VideoRowsContainer from './video_rows_container';
 class VideoIndex extends React.Component {
     
     componentDidMount() {
+        debugger
         this.props.fetchVideos();
     }
 

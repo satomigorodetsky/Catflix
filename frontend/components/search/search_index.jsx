@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../navbar/navbar_container';
 import Footer from '../footer/footer';
-import { Link } from 'react-router-dom';
+import VideoItemContainer from '../browse/video_item_container';
 
 class SearchIndex extends React.Component {
     constructor(props) {
@@ -15,25 +15,16 @@ class SearchIndex extends React.Component {
         if (keyword) {
 
            return  this.props.searchVideos(keyword)
-        } 
+        } else {
+            this.props.searchVideos("")
+        }
         this.props.clearVideos();
 
     };
 
     render () {
         const { videos, errors } = this.props;
-        const searchedVideos = videos.map((video,i) => {
 
-            return (
-                <div className="video-container" key={i}>
-                    <video id="video" className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                        onMouseOut={event => event.currentTarget.pause()} ></video>
-                    {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                    <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                    {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                </div>
-            )
-        })
         const showErrors = errors.length > 0 ? (
             <ul className="search-errors">
                 <li className="errors-lists">Your search did not have any matches.</li>
@@ -50,7 +41,7 @@ class SearchIndex extends React.Component {
                 <NavBarContainer />            
                 {showErrors}
                 <div className="video-index-search">
-                  {searchedVideos}
+                  <VideoItemContainer videos={videos}/>
                 </div>
                 <div>
                 </div>

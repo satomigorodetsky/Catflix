@@ -14,6 +14,7 @@ const VideosReducer = (state = {}, action) => {
         case RECEIVE_LIST_ERRORS:
             return {};
         case RECEIVE_VIDEO:
+            debugger
             return merge({}, state, { [action.video.id]: action.video });
         case RECEIVE_SEARCH_ERRORS:
             return {};

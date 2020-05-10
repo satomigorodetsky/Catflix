@@ -7,6 +7,7 @@ export const RECEIVE_LIST_ERRORS = "RECEIVE_LIST_ERRORS"
 export const CLEAR_VIDEOS = "CLEAR_VIDEOS";
 
 export const receiveVideos = (videos) => {
+    debugger
     return {
         type: RECEIVE_VIDEOS,
         videos

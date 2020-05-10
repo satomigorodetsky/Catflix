@@ -58,7 +58,7 @@
    display: none;
    position: absolute;
    min-width: 150px;
-   height: 80px;
+   height: auto;
    background: rgba(0, 0, 0, 0.75);
    top: 50px;
    left: -140px;
@@ -123,4 +123,9 @@
 .showing {
     display:block;
     padding-left: 10px;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: white;
 }

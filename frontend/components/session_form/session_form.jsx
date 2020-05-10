@@ -35,7 +35,6 @@ class SessionForm extends React.Component{
        let blankValue = field === "password" ? "password_blank" : "email_blank";
 
        return (e) => {
-           // email or password
            if (this.state.field === "") {
               return this.setState({
                    errors: {  
@@ -185,11 +184,12 @@ class SessionForm extends React.Component{
                 </div>
                </form>
                    <div className="footer-session-container">
-                       <h3 className="question" >Questions? Contact me.</h3>          
+                       <h3 className="question" >Questions? <a className="email" href="mailto:satomiokada100@gmail.com" target="_blank" rel="noopener noreferrer">Contact Me.</a></h3>          
                       <div className="footer-session-links">
-                       <a className="github" href="https://github.com/Sokada101">GitHub</a>
-                       <a href="https://www.linkedin.com/in/satomiokada/">LinkedIn</a>
-                       <a href="https://brooklynanimalaction.org/">SaveCats</a>
+                           <a className="github" href="https://sokada101.github.io/" target="_blank">Portfolio</a>
+                           <a href="https://www.linkedin.com/in/satomiokada/" target="_blank">LinkedIn</a>
+                           <a href="https://github.com/Sokada101" target="_blank">GitHub</a>
+                           <a href="https://brooklynanimalaction.org/" target="_blank">SaveCats</a>
                        </div>
                    </div>
            </div>

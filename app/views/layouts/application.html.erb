@@ -4,8 +4,10 @@
     <title>Catflix</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
-   <script src="https://kit.fontawesome.com/b1d719111a.js" crossorigin="anonymous"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="A Full Stack Single-Page Netflix Clone" />
+    <meta property="og:image" content="<%= image_url("preview.png") %>" />
+   <script src="https://kit.fontawesome.com/b1d719111a.js" crossorigin="anonymous" SameSite="None Secure"></script>
     <script type="text/javascript">
      window.garfieldURL = "<%= image_url('garfield.jpg') %>";
      </script>
@@ -15,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
+
   </head>
 
   <body>

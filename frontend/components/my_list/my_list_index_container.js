@@ -1,21 +1,24 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MyListIndex from './my_list_index';
-import { fetchListVideos, clearVideos, fetchVideos } from '../../actions/video_actions';
+import { fetchListVideos, clearVideos } from '../../actions/video_actions';
 import { addToMyList, removeFromMyList } from '../../actions/list_video_actions';
 
-const mstp = (state) => {
+const mstp = (state, ownProps) => {
+   debugger
+   const users = state.entities.users
+   const currentUserId = state.session.currentUser
    return {
-     users: state.entities.users,
-     currentUserId: state.session.currentUser.id,
-     videos: Object.values(state.entities.videos),
-     errors: state.errors.list
+      users,
+      currentUserId,
+      videos: Object.values(state.entities.videos),
+      errors: state.errors.list,
+      // onlist: users[currentUserId].listVideoIds.includes(ownProps.video.id) ? true : false 
    }
 };
 
 const mdtp = (dispatch) => {
     return {
-       fetchVideos: () => dispatch(fetchVideos()),
        fetchListVideos: () => dispatch(fetchListVideos()),
        clearVideos: () => dispatch(clearVideos()),
        addToMyList: (videoId) => dispatch(addToMyList(videoId)),

@@ -28,11 +28,12 @@ class WelcomePage extends React.Component {
                 <button className="demo-button" onClick={this.handleDemoLogin}>TRY A FREE DEMO</button>
                </div>
               <div className="footer-wp-container">
-               <h3 className="question">Questions? Contact me.</h3>
+               <h3 className="question" >Questions? <a className="email" href="mailto:satomiokada100@gmail.com" target="_blank" rel="noopener noreferrer">Contact Me.</a></h3>          
                <div className="footer-wp-links">
-               <a className="github" href="https://github.com/Sokada101">GitHub</a>
-               <a href="https://www.linkedin.com/in/satomiokada/">LinkedIn</a>
-               <a href="https://brooklynanimalaction.org/">SaveCats</a>
+                 <a className="github" href="https://sokada101.github.io/" target="_blank">Portfolio</a>
+                 <a href="https://www.linkedin.com/in/satomiokada/" target="_blank">LinkedIn</a>
+                 <a href="https://github.com/Sokada101" target="_blank">GitHub</a>
+                 <a href="https://brooklynanimalaction.org/" target="_blank">SaveCats</a>
                </div>
              </div>
              </div>

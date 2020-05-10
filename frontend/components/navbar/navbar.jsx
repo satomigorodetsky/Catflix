@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                 <Link to="/browse">Home</Link>
                 <Link to="/browse/tvshows">TV Shows</Link>
                 <Link to="/browse/movies">Movies</Link>
-                {/* <Link to="/browse/mylist">My List</Link> */}
+                <Link to="/browse/mylist">My List</Link>
             </div>
           <div className="searchbar-container" onMouseOver={() => this.setState({ showSearchBar: true })} onMouseLeave={() => this.setState({ showSearchBar: false })}>
             {searchBar}

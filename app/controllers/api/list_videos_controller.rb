@@ -6,7 +6,7 @@ class Api::ListVideosController < ApplicationController
             if @list_videos
                 render :index
             else 
-                render json: ["No videos in my list yet"], status: 400
+                render json: ["No videos in your list yet"], status: 400
             end 
     end 
 
@@ -16,7 +16,7 @@ class Api::ListVideosController < ApplicationController
             @list_videos = current_user.videos 
             render :index 
           else 
-            render json: ["Invalid Video"], status: 400
+            render json: ["Invalid Video Id. User already listed the video."], status: 400
           end 
     end 
 
