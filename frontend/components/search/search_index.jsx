@@ -25,6 +25,11 @@ class SearchIndex extends React.Component {
     render () {
         const { videos, errors } = this.props;
 
+        let allVideos = videos.map((video, key) => {
+            return <VideoItemContainer video={video} key={key}/>
+            }
+        )
+
         const showErrors = errors.length > 0 ? (
             <ul className="search-errors">
                 <li className="errors-lists">Your search did not have any matches.</li>
@@ -41,7 +46,7 @@ class SearchIndex extends React.Component {
                 <NavBarContainer />            
                 {showErrors}
                 <div className="video-index-search">
-                  <VideoItemContainer videos={videos}/>
+                  {allVideos}
                 </div>
                 <div>
                 </div>

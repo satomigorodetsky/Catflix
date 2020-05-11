@@ -1,53 +1,108 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import VideoItemConteiner from './video_item_container';
+import VideoItemContainer from './video_item_container';
 
 class VideoRows extends React.Component {
 
     render () {
-        const { videos, addToMyList, removeFromMyList } = this.props;
+       const { videos } = this.props;
+
+       let allTvShows;
+       let allMovies;
+       let allCartoon; 
+       let allComedy;
+       let allDocumentary;
+       let allAction;
+       let allHorror;
+       let allMusical;
+
+
+       allTvShows = videos.map((video, key) => {
+              if (video.video_type === "tv show") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allMovies = videos.map((video, key) => {
+              if (video.video_type === "movie") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allCartoon = videos.map((video, key) => {
+              if (video.genre === "Cartoon") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allComedy = videos.map((video, key) => {
+              if (video.genre === "Comedy") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allDocumentary = videos.map((video, key) => {
+              if (video.genre === "Documentary") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allAction = videos.map((video, key) => {
+              if (video.genre === "Action") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+       allHorror = videos.map((video, key) => {
+              if (video.genre === "Horror") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
+
+       allMusical = videos.map((video, key) => {
+              if (video.genre === "Musical") {
+                     return <VideoItemContainer video={video} key={key} />
+              }
+       })
        return (
         
         <div className="video-index-container">
             <div className="category">TV Shows</div>
 
             <div className="video-index">
-                <VideoItemConteiner videos={videos} video_type="tv show" addToMyList={addToMyList} removeFromMyList={removeFromMyList} />
+                  {allTvShows}
             </div>
 
             <div className="category">Movies</div>
 
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} video_type="movie" addToMyList={addToMyList} removeFromMyList={removeFromMyList} />
-
+                 {allMovies}  
             </div>
 
             <div className="category">Cartoon</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Cartoon" addToMyList={addToMyList} removeFromMyList={removeFromMyList} />
+              {allCartoon}  
             </div>
 
             <div className="category">Comedy</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Comedy" addToMyList={addToMyList} removeFromMyList={removeFromMyList} />
+              {allComedy}
             </div>
 
             <div className="category">Documentary</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Documentary" addToMyList={addToMyList} removeFromMyList={removeFromMyList}  />
+              {allDocumentary}
             </div>
             <div className="category">Action</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Action" addToMyList={addToMyList} removeFromMyList={removeFromMyList}  />
+              {allAction}
             </div>
             <div className="category">Horror</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Horror" addToMyList={addToMyList} removeFromMyList={removeFromMyList}  />
+              {allHorror}
             </div>
 
             <div className="category">Muscial</div>
             <div className="video-index">
-                   <VideoItemConteiner videos={videos} genre="Musical" addToMyList={addToMyList} removeFromMyList={removeFromMyList}  />
+              {allMusical}
             </div>
         </div>
     )

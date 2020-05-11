@@ -1,8 +1,5 @@
 .video-index-container {
   display: flex;
-  // justify-content: space-between;
-  // align-items: flex-start;
-  // flex-flow: wrap;
   background-color: black;
   margin: 0;
   flex-direction: column;
@@ -14,7 +11,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: left;
-  // justify-content: space-evenly;
 }
 
 
@@ -34,17 +30,16 @@
     padding: 5px;
     right: 0;
     position: relative;
-    // display: flex;
 }
 
 
 .video-container a {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
-  position: absolute;
+  position: relative;
   text-decoration: none;
   background-color: white;
-  left: 40%;
+  left: 20%;
   color: black;
   text-align: center;
   visibility: hidden;
@@ -52,6 +47,8 @@
   min-width: 25%;
   min-height: 20%;
   border: solid black 2px;
+  border-radius: 0.3rem;
+  padding: 5px 20px;
 }
 
 .video-container:hover {
@@ -60,7 +57,6 @@
 
 .video-container:hover a {
  visibility: visible;
-
 }
 
 .video-container > video {

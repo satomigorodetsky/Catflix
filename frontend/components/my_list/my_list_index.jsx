@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { isEmpty, isEqual } from 'lodash';
+import { isEqual } from 'lodash';
 import NavBarContainer  from '../navbar/navbar_container';
 import Footer from '../footer/footer';
-import VideoItem from '../browse/video_item';
+import VideoItemContainer from '../browse/video_item_container';
 
 class MyListIndex extends React.Component {
     constructor(props) {
@@ -30,38 +29,41 @@ class MyListIndex extends React.Component {
 
     render() {
         const { videos, errors } = this.props;
-
+      
+        let allVideos = videos.map((video, key) => {
+            return <VideoItemContainer video={video} key={key} />
+        }
+        )
 
         return errors.length === 0 ? (
-            <>
-                <div className="mylist-index-container">
-                    <NavBarContainer />
-                    <div className="video-index-mylist">
-                        </div>
-                            <div>My List</div>
-                            <div>
-                        <VideoItem videos={videos} />
+            <div className="video-type-container">
+                <NavBarContainer />
+                <div className="video-index-container">
+                    <div className="pathname">My List</div>
+
+                    <div className="video-index-video-type">
+                        {allVideos}
                     </div>
-                       <Footer />
-                 </div>
-            </>
+                    <div className="vt-video-index"></div>
+                </div>
+                <Footer />
+            </div>
         ) : (
-                <>
-                    <div className="mylist-index-container">
-                        <NavBarContainer />
-                        <div className="video-index-mylist">
-                            <div>My List</div>
-                            <div>
-                                You haven't added any titles to your list yet.
-                            </div>
-                        </div>
-                        <Footer />
+                <div className="video-type-container">
+                    <NavBarContainer />
+                    <div className="video-index-container">
+                        <div className="pathname">My List</div>
+                        <ul className="search-errors">
+                            <li className="no-listed-video"> You haven't added any titles to your list yet.</li>
+                        </ul>
                     </div>
-                </>
+                    <Footer />
+                </div>
         )
 
     }
 }
+
 
 
 export default MyListIndex;

@@ -5,15 +5,16 @@ import { fetchListVideos, clearVideos } from '../../actions/video_actions';
 import { addToMyList, removeFromMyList } from '../../actions/list_video_actions';
 
 const mstp = (state, ownProps) => {
-    debugger
     const users = state.entities.users
     const currentUserId = state.session.currentUser
+    const onlist = users[currentUserId].listVideoIds.includes(ownProps.video.id) ? true : false;
+
     return {
         users,
         currentUserId,
         videos: Object.values(state.entities.videos),
         errors: state.errors.list,
-        // onlist: users[currentUserId].listVideoIds.includes(ownProps.video.id) ? true : false 
+        onlist
     }
 };
 

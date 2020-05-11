@@ -1,0 +1,28 @@
+.video-container .button-div {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: white;
+    background-color: rgba(133, 133, 133, 0.6);
+    min-width: 25%;
+    min-height: 20%;
+    position: relative;
+    left: 30%;
+    font-size: 1em;
+    visibility: hidden;
+}
+
+.video-container:hover > .button-div {
+    visibility: visible;
+}
+
+.button-div {
+       padding: 7px 10px;
+    display: inline;
+    border-radius: 0.3rem;
+}
+
+.play-div {
+    padding: 5px;
+    display: inline;
+    border-radius: 0.3rem
+}

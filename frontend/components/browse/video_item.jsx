@@ -2,138 +2,55 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-
 class VideoItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             hoveredVideo: false,
-            addedToList: false
         }
         this.handleList = this.handleList.bind(this);
     }
 
-    handleList(id) {
+    handleList() {
+        
+        const { onlist, video, addToMyList, removeFromMyList } = this.props;
         return (e) => {
+            
             e.preventDefault();
-            this.setState({ addedToList: (!this.state.addedToList) })
-            if (!this.state.addedToList) {
-                this.props.addToMyList(id)
+            if (onlist) {
+                
+                removeFromMyList(video.id);
+                if (this.props.location.pathname.startsWith("/browse/mylist")) {
+                    this.props.history.push(`/browse/mylist`);
+                }
             } else {
-                this.props.removeFromMyList(id)
-            };
+                
+                addToMyList(video.id)
+            }
         }
     }
 
+
     render(){
-       const { addedToList } = this.state;
-        const { videos, video_type, genre } = this.props;
-        const button = addedToList ? "Remove" : "Add";
+        const { key, video, onlist } = this.props;
+
+        const listButton = onlist ?  <i className="fas fa-check"></i> : 
+            <i className="fas fa-plus"></i> ;
         const pathname = this.props.location.pathname;
 
-        if (pathname === "/browse") {
+
+        if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || 
+            pathname == "/search" || pathname === "/browse/mylist" || pathname === "/browse")  {
+            
             return (
-                videos.map((video, i) => {
-                    if (video.video_type === video_type) {
-                        return (
-                            <div className="video-container" key={i}>
-                                <video id="video" className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                    onMouseOut={event => event.currentTarget.pause()} ></video>
-                                {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                                <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                                <button onClick={this.handleList(video.id)} >{button}</button>
-
-                                {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                            </div>
-                        )
-                    } else if (video.genre === genre) {
-                        return (
-                            <div className="video-container" key={i}>
-                                <video id="video" className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                    onMouseOut={event => event.currentTarget.pause()} ></video>
-                                {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                                <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                                <button onClick={this.handleList(video.id)} >{button}</button>
-
-                                {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                            </div>
-                        )
-                    } 
-                })
+                    <div className="video-container" key={key}>
+                        <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
+                            onMouseOut={event => event.currentTarget.pause()} ></video>
+                    <Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i>&nbsp;Play</Link>
+                    <div className="button-div" onClick={this.handleList()}>{listButton} &nbsp;My List</div>
+                    </div>
             )
         }
-
-
-        if (pathname === "/browse/tvshows")  {
-         return (
-             videos.map((video, i) => {
-                 if (video.video_type === "tv show") {
-                     return (
-                         <div className="video-container" key={i}>
-                             <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                 onMouseOut={event => event.currentTarget.pause()} ></video>
-                             {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                             <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                             {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                         </div>
-                     )
-                 }
-             })
-         )  
-        }
-
-        if (pathname === "/browse/movies") {
-            return (
-                videos.map((video, i) => {
-                    if (video.video_type === "movie") {
-                        return (
-                            <div className="video-container" key={i}>
-                                <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                    onMouseOut={event => event.currentTarget.pause()} ></video>
-                                {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                                <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                                {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                            </div>
-                        )
-                    }
-                })
-            )
-        }
-
-        if (pathname == "/search") {
-            return (
-                videos.map((video, i) => {    
-                        return (
-                            <div className="video-container" key={i}>
-                                <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                    onMouseOut={event => event.currentTarget.pause()} ></video>
-                                {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                                <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                                {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                            </div>
-                        )
-                    }
-                )
-            )
-        }
-
-        if (pathname === "/browse/mylist") {
-            return (
-                videos.map((video, i) => {
-                    return (
-                        <div className="video-container" key={i}>
-                            <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                                onMouseOut={event => event.currentTarget.pause()} ></video>
-                            {/* <img src={video.thumbnail} alt={video.title} className="flex-row"/> */}
-                            <div className="bl"><Link to={`/browse/${video.id}`}>Play</Link></div>
-                            {/* <video controls src={video.url} placeholder={video.thumbnail}></video> */}
-                        </div>
-                    )
-                }
-                )
-            )
-        }
-
 
     }
 }

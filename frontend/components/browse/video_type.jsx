@@ -12,12 +12,37 @@ class VideoType extends React.Component {
     }
 
     componentDidMount() {
+        
             this.props.fetchVideos()
     };
 
     render() {
+        
         const { videos, location } = this.props;
-        const pathname = location.pathname === "/browse/tvshows" ? "TV Shows" : "Movies"
+        const pathname = location.pathname === "/browse/tvshows" ? "TV Shows" : "Movies";
+
+        let allVideos;
+        let allShows = ""; 
+        let allMovies = "";
+
+        if (location.pathname === "/browse/tvshows") {
+            
+            allShows = videos.map((video, key) => {
+                if (video.video_type === "tv show") {
+                    return <VideoItemContainer video={video} key={key} />
+                }
+            })
+        }
+
+        if (location.pathname === "/browse/movies") {
+            allMovies = videos.map((video, key) => {
+                if (video.video_type === "movie") {
+                    return <VideoItemContainer video={video} key={key} />
+                }
+            })
+        }
+
+       allVideos = location.pathname === "/browse/tvshows" ? allShows : allMovies;
         
         return (
             <div className="video-type-container">
@@ -26,7 +51,7 @@ class VideoType extends React.Component {
                 <div className="pathname">{pathname}</div>
 
                     <div className="video-index-video-type">
-                       <VideoItemContainer videos={videos}/>
+                        {allVideos}
                     </div>
                     <div className="vt-video-index"></div>
 
