@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DropDown from './dropdown';
-import { SearchIndexContainer } from '../search/search_index_container';
+import { debounce } from 'lodash';
+
 
 
 class NavBar extends React.Component {
@@ -10,43 +11,53 @@ class NavBar extends React.Component {
      this.state = {
        showDropdown: false,
        showSearchBar: false,
-       query: ""
+       query: '',
      }
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.debouncedMakeRequest = debounce(this.debouncedMakeRequest, 430);
 
   }
 
-  handleInput(e) {
-    e.preventDefault();
+  componentDidMount() {
+    if (this.props.location.pathname === "/search") {
+      this.setState({ showSearchBar: true })
+      let queryParams = new URLSearchParams(this.props.location.search)
+      let query = queryParams.get("keyword")
+      this.setState({
+        query
+      }); 
+    }
+  }
 
+  handleInput(e) {
+    debugger
     let query = e.currentTarget.value;
     this.setState({
       query
     }); 
+    if (query === "") {
+      this.setState({ query: "" });
+      // this.props.history.push(`/search?keyword=${this.state.query}`)
+    } else {
+      this.debouncedMakeRequest(query);
+    }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  debouncedMakeRequest() {
     this.props.history.push(`/search?keyword=${this.state.query}`);
-    this.setState({query: ''})
-
-    if (this.props.location.pathname === "/search" ) {
-          e.preventDefault();
-          this.props.searchVideos(this.state.query);
-          this.setState({ query: '' })
-    }
-  };
-
+      if (this.props.location.pathname === "/search" ) {
+        this.props.searchVideos(this.state.query);
+      }
+  }
   
   render () {
      const {showSearchBar} = this.state;
+     
      let searchBarClass = showSearchBar ? "showing" : "not-showing";
 
      let searchBar =
       <>
          <i className="fas fa-search" id="search-icon"></i>
-         <form onSubmit={this.handleSubmit}>
           <input
           type="text"
           className={`search-input ${searchBarClass}`}
@@ -54,7 +65,6 @@ class NavBar extends React.Component {
           value={this.state.query}
           onChange={this.handleInput}
         />
-         </form>
       </>;
       return (
           <div className="navbar-container"> 
@@ -65,7 +75,9 @@ class NavBar extends React.Component {
                 <Link to="/browse/movies">Movies</Link>
                 <Link to="/browse/mylist">My List</Link>
             </div>
-          <div className="searchbar-container" onMouseOver={() => this.setState({ showSearchBar: true })} onMouseLeave={() => this.setState({ showSearchBar: false })}>
+          <div className="searchbar-container" onClick={() => this.setState({ showSearchBar: true })} 
+            onFocus={() => this.setState({ showSearchBar: true })}
+            onBlur={() => this.setState({ showSearchBar: false })}>
             {searchBar}
             </div>
             <div className="dropdown-trigger">

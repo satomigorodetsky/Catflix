@@ -1185,10 +1185,9 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-arrow-left",
         onMouseEnter: this.handleFocus(true),
         onMouseLeave: this.handleFocus(false)
-      }), showText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\xA0 Back to Browse") : "", " ") : ""; // <div className="arrow" onClick={this.handleGoBack}>
-      //     <i className="fas fa-arrow-left" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)} ></i>
-      //     <div>&nbsp; Back to Browse</div> </div> 
-
+      }), showText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "back-to"
+      }, "\xA0 Back to Browse") : "", " ") : "";
       if (this.props.video === undefined) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page-container"
@@ -1746,7 +1745,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dropdown */ "./frontend/components/navbar/dropdown.jsx");
-/* harmony import */ var _search_search_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search_index_container */ "./frontend/components/search/search_index_container.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1788,37 +1788,51 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       showDropdown: false,
       showSearchBar: false,
-      query: ""
+      query: ''
     };
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.debouncedMakeRequest = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["debounce"])(_this.debouncedMakeRequest, 430);
     return _this;
   }
 
   _createClass(NavBar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.location.pathname === "/search") {
+        this.setState({
+          showSearchBar: true
+        });
+        var queryParams = new URLSearchParams(this.props.location.search);
+        var query = queryParams.get("keyword");
+        this.setState({
+          query: query
+        });
+      }
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(e) {
-      e.preventDefault();
+      debugger;
       var query = e.currentTarget.value;
       this.setState({
         query: query
       });
+
+      if (query === "") {
+        this.setState({
+          query: ""
+        }); // this.props.history.push(`/search?keyword=${this.state.query}`)
+      } else {
+        this.debouncedMakeRequest(query);
+      }
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
+    key: "debouncedMakeRequest",
+    value: function debouncedMakeRequest() {
       this.props.history.push("/search?keyword=".concat(this.state.query));
-      this.setState({
-        query: ''
-      });
 
       if (this.props.location.pathname === "/search") {
-        e.preventDefault();
         this.props.searchVideos(this.state.query);
-        this.setState({
-          query: ''
-        });
       }
     }
   }, {
@@ -1831,15 +1845,13 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       var searchBar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-search",
         id: "search-icon"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "search-input ".concat(searchBarClass),
         placeholder: "Titles, genres",
         value: this.state.query,
         onChange: this.handleInput
-      })));
+      }));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1857,12 +1869,17 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         to: "/browse/mylist"
       }, "My List")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchbar-container",
-        onMouseOver: function onMouseOver() {
+        onClick: function onClick() {
           return _this2.setState({
             showSearchBar: true
           });
         },
-        onMouseLeave: function onMouseLeave() {
+        onFocus: function onFocus() {
+          return _this2.setState({
+            showSearchBar: true
+          });
+        },
+        onBlur: function onBlur() {
           return _this2.setState({
             showSearchBar: false
           });
@@ -1919,7 +1936,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mstp = function mstp(state, ownProps) {
   return {
-    // return as currentusers state like this {id: 9, email: "email@email"}
     currentUser: state.entities.users[state.session.currentUser]
   };
 };
