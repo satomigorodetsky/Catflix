@@ -1106,9 +1106,20 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(VideoShow);
 
   function VideoShow(props) {
+    var _this;
+
     _classCallCheck(this, VideoShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      mouseMoving: false,
+      showText: false
+    };
+    _this.clearArrow;
+    _this.handleMouse = _this.handleMouse.bind(_assertThisInitialized(_this));
+    _this.handleGoBack = _this.handleGoBack.bind(_assertThisInitialized(_this));
+    _this.handleFocus = _this.handleFocus.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(VideoShow, [{
@@ -1121,18 +1132,74 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
       ;
     }
   }, {
+    key: "handleMouse",
+    value: function handleMouse(e) {
+      var _this2 = this;
+
+      debugger;
+      e.preventDefault();
+      this.setState({
+        mouseMoving: true
+      });
+
+      var showArrow = function showArrow() {
+        debugger;
+        clearTimeout(_this2.clearArrow);
+        _this2.clearArrow = setTimeout(function () {
+          return _this2.setState({
+            mouseMoving: false
+          });
+        }, 4000);
+      };
+
+      debugger;
+      showArrow();
+    }
+  }, {
+    key: "handleGoBack",
+    value: function handleGoBack(e) {
+      e.preventDefault();
+      this.props.history.goBack();
+    }
+  }, {
+    key: "handleFocus",
+    value: function handleFocus(val) {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState({
+          showText: val
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+          mouseMoving = _this$state.mouseMoving,
+          showText = _this$state.showText;
+      var arrow = mouseMoving ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "arrow",
+        onClick: this.handleGoBack
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-arrow-left",
+        onMouseEnter: this.handleFocus(true),
+        onMouseLeave: this.handleFocus(false)
+      }), showText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\xA0 Back to Browse") : "", " ") : ""; // <div className="arrow" onClick={this.handleGoBack}>
+      //     <i className="fas fa-arrow-left" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)} ></i>
+      //     <div>&nbsp; Back to Browse</div> </div> 
+
       if (this.props.video === undefined) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page-video-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+      }, arrow, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
         className: "show-page-video",
         src: this.props.video.url,
         autoPlay: true,
-        controls: true
+        controls: true,
+        onMouseMove: this.handleMouse
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);

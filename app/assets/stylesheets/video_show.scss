@@ -18,3 +18,18 @@
   height: auto; 
   outline: none;
 }
+
+.arrow {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 4em;
+  position:absolute;
+  float:left;
+  z-index: 11;
+  left: 5%;
+  top: 4%;
+  text-shadow:2px 2px 4px black;
+  display: flex;
+  flex-direction: row;
+}
+
