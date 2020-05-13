@@ -63,50 +63,45 @@ class VideoRows extends React.Component {
               }
        })
        return (
-        
-        <div className="video-index-container">
-            <div className="category">TV Shows</div>
-
-            <div className="video-index">
-                  {allTvShows}
-            </div>
-
-            <div className="category">Movies</div>
-
-            <div className="video-index">
-                 {allMovies}  
-            </div>
-
-            <div className="category">Cartoon</div>
-            <div className="video-index">
-              {allCartoon}  
-            </div>
-
-            <div className="category">Comedy</div>
-            <div className="video-index">
-              {allComedy}
-            </div>
-
-            <div className="category">Documentary</div>
-            <div className="video-index">
-              {allDocumentary}
-            </div>
-            <div className="category">Action</div>
-            <div className="video-index">
-              {allAction}
-            </div>
-            <div className="category">Horror</div>
-            <div className="video-index">
-              {allHorror}
-            </div>
-
-            <div className="category">Muscial</div>
-            <div className="video-index">
-              {allMusical}
-            </div>
-        </div>
-    )
-    } 
+              <>
+                     <div className="category">TV Shows</div>
+                     <div class="container">
+                            {allTvShows}
+                            {allMovies}  
+                            {allCartoon}
+                     </div> 
+                     {/* <div className="category">Movies</div>
+                     <div class="container">
+                            {allMovies}  
+                     </div> 
+                     <div className="category">Cartoon</div>
+                     <div class="container">
+                            {allCartoon}
+                     </div> 
+                     <div className="category">Comedy</div>
+                     <div class="container">
+                            {allComedy}
+                     </div> 
+                     <div className="category">Documentary</div>
+                     <div class="container">
+                            {allDocumentary}
+                     </div> 
+                     <div className="category">Action</div>
+                     <div class="container">
+                            {allAction}
+                     </div> 
+                     <div className="category">Horror</div>
+                     <div class="container">
+                            {allHorror}
+                     </div> 
+                     <div className="category">Muscial</div>
+                     <div class="container">
+                            {allMusical}
+                     </div>  */}
+              </>
+                   
+          )
+       } 
 };
 
 export default VideoRows;

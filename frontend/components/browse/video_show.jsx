@@ -14,7 +14,7 @@ class VideoShow extends React.Component {
         this.handleMouse = this.handleMouse.bind(this);
         this.handleGoBack = this.handleGoBack.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
-
+        this.videoEndHandler = this.videoEndHandler.bind(this);
     }
     
     componentDidMount () {
@@ -23,14 +23,12 @@ class VideoShow extends React.Component {
     }
 
     handleMouse(e) {
-        debugger
         e.preventDefault();
         this.setState({
             mouseMoving: true 
         })
 
         let showArrow = () => {
-            debugger
             clearTimeout(this.clearArrow);
             this.clearArrow = setTimeout(() => this.setState({ mouseMoving: false}), 4000)
         }
@@ -50,6 +48,13 @@ class VideoShow extends React.Component {
               })
           }
     }
+   
+    videoEndHandler() {
+        this.setState({
+            mouseMoving: true,
+            showText: true
+        })
+    }
 
     render () {
 
@@ -64,7 +69,7 @@ class VideoShow extends React.Component {
                 <NavBarContainer />
                 <div className="show-page-video-container">
                     {arrow}
-                    <video className="show-page-video" src={this.props.video.url} autoPlay controls onMouseMove={this.handleMouse} />
+                    <video onEnded={() => this.videoEndHandler()} className="show-page-video" src={this.props.video.url} autoPlay controls onMouseMove={this.handleMouse} />
                 </div>
                 <Footer />
             </div>

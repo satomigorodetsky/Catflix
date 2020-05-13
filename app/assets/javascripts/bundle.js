@@ -596,9 +596,12 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      hoveredVideo: false
+      hoveredVideo: false,
+      muted: true
     };
+    _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
+    _this.toggleVideo = _this.toggleVideo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -627,6 +630,16 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "toggleMute",
+    value: function toggleMute(e) {
+      e.preventDefault();
+    }
+  }, {
+    key: "toggleVideo",
+    value: function toggleVideo() {
+      e.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
@@ -641,12 +654,13 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       var pathname = this.props.location.pathname;
 
       if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname == "/search" || pathname === "/browse/mylist" || pathname === "/browse") {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "video-container",
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "item",
           key: key
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
-          className: "flex-row",
+          className: "video-rows",
           src: video.url,
+          muted: true,
           onMouseEnter: function onMouseEnter(event) {
             return event.currentTarget.play();
           },
@@ -655,14 +669,18 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           onMouseOut: function onMouseOut(event) {
             return event.currentTarget.pause();
           }
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-controller"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "play-index-button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/browse/".concat(video.id)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-play video-div"
-        }), "\xA0Play"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "button-div",
-          onClick: this.handleList()
-        }, listButton, " \xA0My List"));
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "list-index-button",
+          onClick: this.handleList(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton)))));
       }
     }
   }]);
@@ -670,7 +688,12 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
   return VideoItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(VideoItem));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(VideoItem)); // <div className="video-container" key={key}>
+//     <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
+//         onMouseOut={event => event.currentTarget.pause()} ></video>
+// <Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i>&nbsp;Play</Link>
+// <div className="button-div" onClick={this.handleList()}>{listButton} &nbsp;My List</div>
+// </div>
 
 /***/ }),
 
@@ -770,10 +793,18 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(VideoMain);
 
-  function VideoMain() {
+  function VideoMain(props) {
+    var _this;
+
     _classCallCheck(this, VideoMain);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      muted: true
+    };
+    _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
+    _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(VideoMain, [{
@@ -787,9 +818,61 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
       this.props.clearVideos();
     }
   }, {
+    key: "handleList",
+    value: function handleList(id) {
+      debugger;
+      var _this$props = this.props,
+          onlist = _this$props.onlist,
+          videoId = _this$props.videoId,
+          addToMyList = _this$props.addToMyList,
+          removeFromMyList = _this$props.removeFromMyList;
+      return function (e) {
+        e.preventDefault();
+
+        if (onlist) {
+          debugger;
+          removeFromMyList(id);
+        } else {
+          debugger;
+          addToMyList(id);
+        }
+      };
+    }
+  }, {
+    key: "toggleMute",
+    value: function toggleMute(e) {
+      e.preventDefault();
+      var videoEl = document.getElementsByClassName("main-video")[0];
+      this.setState({
+        muted: !this.state.muted
+      });
+      videoEl.muted = !videoEl.muted;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var videos = this.props.videos;
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          videos = _this$props2.videos,
+          onlist = _this$props2.onlist;
+      var muted = this.state.muted;
+      var audio = muted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "mute-button",
+        onClick: this.toggleMute
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-volume-mute"
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "mute-button",
+        onClick: this.toggleMute
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-volume-up"
+      }));
+      var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-plus"
+      });
       var allVideos = videos.map(function (video, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "detail-container"
@@ -797,10 +880,18 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
           className: "bl main-video-title"
         }, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "bl main-video-description"
-        }, video.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/browse/".concat(video.id),
-          className: "bl"
-        }, "Play")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        }, video.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "play-list-buttons"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "main-play-button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/browse/".concat(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-play video-div"
+        }), "\xA0\xA0Play")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "main-list-button",
+          onClick: _this2.handleList(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton, " \xA0My List")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
           className: "main-video",
           muted: true,
           autoPlay: true,
@@ -814,7 +905,7 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
       var video = allVideos[0];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-video-container"
-      }, video);
+      }, audio, video);
     }
   }]);
 
@@ -838,13 +929,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/video_actions */ "./frontend/actions/video_actions.js");
 /* harmony import */ var _video_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video_main */ "./frontend/components/browse/video_main.jsx");
+/* harmony import */ var _actions_list_video_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/list_video_actions */ "./frontend/actions/list_video_actions.js");
+
 
 
 
 
 var mstp = function mstp(state) {
+  var users = state.entities.users;
+  var currentUserId = state.session.currentUser;
+  var videoId = parseInt(Object.keys(state.entities.videos)[0]);
+  var onlist = users[currentUserId].listVideoIds.includes(videoId) ? true : false;
   return {
-    videos: Object.values(state.entities.videos)
+    videos: Object.values(state.entities.videos),
+    videoId: videoId,
+    onlist: onlist
   };
 };
 
@@ -855,6 +954,12 @@ var mdtp = function mdtp(dispatch) {
     },
     clearVideos: function clearVideos() {
       return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["clearVideos"])());
+    },
+    addToMyList: function addToMyList(videoId) {
+      return dispatch(Object(_actions_list_video_actions__WEBPACK_IMPORTED_MODULE_3__["addToMyList"])(videoId));
+    },
+    removeFromMyList: function removeFromMyList(videoId) {
+      return dispatch(Object(_actions_list_video_actions__WEBPACK_IMPORTED_MODULE_3__["removeFromMyList"])(videoId));
     }
   };
 };
@@ -987,41 +1092,11 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           });
         }
       });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allTvShows), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Movies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allMovies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Cartoon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allCartoon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allComedy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Documentary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allDocumentary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allAction), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Horror"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allHorror), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Muscial"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index"
-      }, allMusical));
+        "class": "container"
+      }, allTvShows, allMovies, allCartoon));
     }
   }]);
 
@@ -1119,6 +1194,7 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
     _this.handleMouse = _this.handleMouse.bind(_assertThisInitialized(_this));
     _this.handleGoBack = _this.handleGoBack.bind(_assertThisInitialized(_this));
     _this.handleFocus = _this.handleFocus.bind(_assertThisInitialized(_this));
+    _this.videoEndHandler = _this.videoEndHandler.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1136,14 +1212,12 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
     value: function handleMouse(e) {
       var _this2 = this;
 
-      debugger;
       e.preventDefault();
       this.setState({
         mouseMoving: true
       });
 
       var showArrow = function showArrow() {
-        debugger;
         clearTimeout(_this2.clearArrow);
         _this2.clearArrow = setTimeout(function () {
           return _this2.setState({
@@ -1173,8 +1247,18 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "videoEndHandler",
+    value: function videoEndHandler() {
+      this.setState({
+        mouseMoving: true,
+        showText: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var _this$state = this.state,
           mouseMoving = _this$state.mouseMoving,
           showText = _this$state.showText;
@@ -1194,6 +1278,9 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page-video-container"
       }, arrow, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        onEnded: function onEnded() {
+          return _this4.videoEndHandler();
+        },
         className: "show-page-video",
         src: this.props.video.url,
         autoPlay: true,

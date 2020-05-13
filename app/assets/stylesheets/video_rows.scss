@@ -78,3 +78,38 @@
   color: red;
 
 }
+
+// from react level up coding 
+
+.container {
+  display: flex;
+  padding-left: 100px;
+  height: 300px;
+}
+
+// needs to be changed
+.container video {
+  width: 450px;
+  height: auto;
+}
+// needs to be changed
+
+.item {
+  flex: 0 0 19.7%;
+  text-align: center;
+  margin: 0 2px;
+  transition: transform 300ms ease 100ms;
+  position: relative;
+}
+
+.container:hover .item {
+   transform: translateX(-25%);
+}
+
+.item:hover ~ .item {
+   transform: translateX(25%);
+}
+
+.item:hover {
+  transform: scale(1.5) !important;
+}
