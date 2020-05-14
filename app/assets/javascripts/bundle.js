@@ -597,11 +597,16 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       hoveredVideo: false,
-      muted: true
+      // muted: true,
+      showController: false,
+      showSection: false
     };
     _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
-    _this.toggleVideo = _this.toggleVideo.bind(_assertThisInitialized(_this));
+    _this.openController = _this.openController.bind(_assertThisInitialized(_this));
+    _this.closeController = _this.closeController.bind(_assertThisInitialized(_this));
+    _this.handleShowDetail = _this.handleShowDetail.bind(_assertThisInitialized(_this));
+    _this.closeSection = _this.closeSection.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -630,34 +635,152 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "toggleMute",
-    value: function toggleMute(e) {
-      e.preventDefault();
+    key: "handleShowDetail",
+    value: function handleShowDetail() {
+      var _this3 = this;
+
+      var showSection = this.state.showSection;
+      return function (e) {
+        e.preventDefault();
+
+        if (!showSection) {
+          _this3.setState({
+            showSection: true,
+            showController: false
+          });
+        } else {
+          _this3.setState({
+            showSection: false
+          });
+        }
+      };
     }
   }, {
-    key: "toggleVideo",
-    value: function toggleVideo() {
-      e.preventDefault();
+    key: "closeSection",
+    value: function closeSection() {
+      console.log("closing section");
+      this.setState({
+        showSection: false
+      });
+    }
+  }, {
+    key: "toggleMute",
+    value: function toggleMute(e) {// // I need to set state for every single elements somehow.
+      // e.preventDefault();
+      // debugger
+      // let videoEl = document.getElementsByClassName("video-rows");
+      // let i = 0;
+      // for (i = 0; i < videoEl.length; i++) {
+      //     debugger
+      //     let eachVid = videoEl[i]; 
+      //     debugger
+      //     this.setState(prevState => {
+      //         debugger 
+      //     });
+      //     eachVid.muted = !eachVid.muted;
+      // }
+      // debugger
+    }
+  }, {
+    key: "openController",
+    value: function openController() {
+      var _this4 = this;
+
+      return function (e) {
+        e.preventDefault();
+        debugger;
+
+        _this4.setState({
+          showController: true
+        });
+      };
+    }
+  }, {
+    key: "closeController",
+    value: function closeController() {
+      var _this5 = this;
+
+      return function (e) {
+        e.preventDefault();
+        debugger;
+
+        _this5.setState({
+          showController: false
+        });
+      };
     }
   }, {
     key: "render",
     value: function render() {
+      var _this6 = this;
+
       var _this$props2 = this.props,
           key = _this$props2.key,
           video = _this$props2.video,
           onlist = _this$props2.onlist;
+      var _this$state = this.state,
+          showSection = _this$state.showSection,
+          showController = _this$state.showController;
+      var specialCombo;
+
+      if (showSection && !showController) {
+        specialCombo = "specialItem";
+      } else {
+        specialCombo = "";
+      }
+
+      var section = showSection ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-section"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this6.closeSection();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-times"
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "index-section"
+      }, "DETAIls IS NOT SHOWING ");
+      var visibility = showController ? "now-you-see-me" : "now-you-dont"; // const audio = muted ?
+      //     (<button className="mute-button" onClick={this.toggleMute}>
+      //         <i className="fas fa-volume-mute"></i>
+      //     </button>
+      //     ) : (
+      //         <button className="mute-button" onClick={this.toggleMute}>
+      //             <i className="fas fa-volume-up"></i>
+      //         </button>)
+
       var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-plus"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
       });
       var pathname = this.props.location.pathname;
 
       if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname == "/search" || pathname === "/browse/mylist" || pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "item",
-          key: key
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+          className: "item ".concat(specialCombo),
+          key: key,
+          onMouseEnter: this.openController(),
+          onMouseLeave: this.closeController()
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-controller ".concat(visibility)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "play-index-button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/browse/".concat(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-play video-div"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "list-index-button",
+          onClick: this.handleList(video.id)
+        }, listButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "detail-index-button",
+          onClick: this.handleShowDetail()
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-angle-down"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "video-index-title"
+        }, video.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
           className: "video-rows",
           src: video.url,
           muted: true,
@@ -669,18 +792,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           onMouseOut: function onMouseOut(event) {
             return event.currentTarget.pause();
           }
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "video-controller"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "play-index-button"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/browse/".concat(video.id)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-play video-div"
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "list-index-button",
-          onClick: this.handleList(video.id)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton)))));
+        }), section));
       }
     }
   }]);
@@ -820,7 +932,6 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleList",
     value: function handleList(id) {
-      debugger;
       var _this$props = this.props,
           onlist = _this$props.onlist,
           videoId = _this$props.videoId,
@@ -830,10 +941,8 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
         e.preventDefault();
 
         if (onlist) {
-          debugger;
           removeFromMyList(id);
         } else {
-          debugger;
           addToMyList(id);
         }
       };
@@ -843,6 +952,7 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
     value: function toggleMute(e) {
       e.preventDefault();
       var videoEl = document.getElementsByClassName("main-video")[0];
+      debugger;
       this.setState({
         muted: !this.state.muted
       });
@@ -869,9 +979,9 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-volume-up"
       }));
       var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-check"
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-plus"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
       });
       var allVideos = videos.map(function (video, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1032,7 +1142,8 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
         if (video.video_type === "tv show") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
             video: video,
-            key: key
+            key: key,
+            muted: true
           });
         }
       });
@@ -1040,7 +1151,8 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
         if (video.video_type === "movie") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
             video: video,
-            key: key
+            key: key,
+            muted: true
           });
         }
       });
@@ -1048,7 +1160,8 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
         if (video.genre === "Cartoon") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
             video: video,
-            key: key
+            key: key,
+            muted: true
           });
         }
       });
@@ -1095,8 +1208,12 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "container"
-      }, allTvShows, allMovies, allCartoon));
+        className: "container"
+      }, allTvShows), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Movies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allMovies));
     }
   }]);
 

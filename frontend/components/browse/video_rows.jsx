@@ -18,19 +18,22 @@ class VideoRows extends React.Component {
 
        allTvShows = videos.map((video, key) => {
               if (video.video_type === "tv show") {
-                     return <VideoItemContainer video={video} key={key} />
+                     return <VideoItemContainer video={video} key={key} muted={true} />
               }
        })
 
        allMovies = videos.map((video, key) => {
               if (video.video_type === "movie") {
-                     return <VideoItemContainer video={video} key={key} />
+                     return (
+                                   <VideoItemContainer video={video} key={key} muted={true} />
+              
+                     )
               }
        })
 
        allCartoon = videos.map((video, key) => {
               if (video.genre === "Cartoon") {
-                     return <VideoItemContainer video={video} key={key} />
+                     return <VideoItemContainer video={video} key={key} muted={true}  />
               }
        })
 
@@ -65,37 +68,36 @@ class VideoRows extends React.Component {
        return (
               <>
                      <div className="category">TV Shows</div>
-                     <div class="container">
-                            {allTvShows}
-                            {allMovies}  
-                            {allCartoon}
+                     <div className="container">
+                            {allTvShows}  
                      </div> 
-                     {/* <div className="category">Movies</div>
-                     <div class="container">
+                     
+                     <div className="category">Movies</div>
+                     <div className="container">
                             {allMovies}  
                      </div> 
-                     <div className="category">Cartoon</div>
-                     <div class="container">
+                     {/* <div className="category">Cartoon</div>
+                     <div className="container">
                             {allCartoon}
                      </div> 
                      <div className="category">Comedy</div>
-                     <div class="container">
+                     <div className="container">
                             {allComedy}
                      </div> 
                      <div className="category">Documentary</div>
-                     <div class="container">
+                     <div className="container">
                             {allDocumentary}
                      </div> 
                      <div className="category">Action</div>
-                     <div class="container">
+                     <div className="container">
                             {allAction}
                      </div> 
                      <div className="category">Horror</div>
-                     <div class="container">
+                     <div className="container">
                             {allHorror}
                      </div> 
                      <div className="category">Muscial</div>
-                     <div class="container">
+                     <div className="container">
                             {allMusical}
                      </div>  */}
               </>

@@ -20,30 +20,34 @@ class VideoMain extends React.Component {
     }
 
     handleList(id) {
-         debugger
+         
         const { onlist, videoId, addToMyList, removeFromMyList } = this.props;
         return (e) => {
 
             e.preventDefault();
             if (onlist) {
-                debugger
+                
                 removeFromMyList(id);
             } else {
-               debugger
+               
                 addToMyList(id)
             }
         }
     }
 
     toggleMute(e) {
+        
         e.preventDefault();
 
         let videoEl = document.getElementsByClassName("main-video")[0];
+
+        debugger
 
         this.setState({
             muted: !this.state.muted
         });
 
+        
         videoEl.muted = !videoEl.muted;
     }
    
@@ -60,8 +64,8 @@ class VideoMain extends React.Component {
                 <i className="fas fa-volume-up"></i>
             </button> )
 
-        const listButton = onlist ? <i className="fas fa-check"></i> :
-            <i className="fas fa-plus"></i>;
+        const listButton = onlist ? <i className="fas fa-plus"></i> :
+            <i className="fas fa-check"></i>;
 
 
         const allVideos = videos.map((video,i) => {

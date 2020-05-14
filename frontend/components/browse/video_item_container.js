@@ -14,7 +14,7 @@ const mstp = (state, ownProps) => {
         currentUserId,
         videos: Object.values(state.entities.videos),
         errors: state.errors.list,
-        onlist
+        onlist,
     }
 };
 
