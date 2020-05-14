@@ -893,8 +893,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           key = _this$props2.key,
           video = _this$props2.video,
           onlist = _this$props2.onlist,
-          setDropDown = _this$props2.setDropDown,
-          className = _this$props2.className;
+          setDropDown = _this$props2.setDropDown;
       var _this$state = this.state,
           showSection = _this$state.showSection,
           showController = _this$state.showController;
@@ -943,7 +942,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
       if (pathname == "/search" || pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "item ".concat(specialCombo, " ").concat(className),
+          className: "item ".concat(specialCombo),
           key: key,
           onMouseEnter: this.openController(),
           onMouseLeave: this.closeController()
@@ -1344,7 +1343,13 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       tid: null,
-      mid: null
+      mid: null,
+      caid: null,
+      coid: null,
+      doid: null,
+      aid: null,
+      hid: null,
+      muid: null
     };
     _this.setDropDown = _this.setDropDown.bind(_assertThisInitialized(_this));
     return _this;
@@ -1357,7 +1362,13 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       return function (videoId) {
         that.setState({
           tid: null,
-          mid: null
+          mid: null,
+          caid: null,
+          coid: null,
+          doid: null,
+          aid: null,
+          hid: null,
+          muid: null
         });
         that.setState(_defineProperty({}, id, videoId));
       };
@@ -1370,7 +1381,13 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var videos = this.props.videos;
       var _this$state = this.state,
           tid = _this$state.tid,
-          mid = _this$state.mid;
+          mid = _this$state.mid,
+          caid = _this$state.caid,
+          coid = _this$state.coid,
+          doid = _this$state.doid,
+          aid = _this$state.aid,
+          hid = _this$state.hid,
+          muid = _this$state.muid;
       var allTvShows;
       var allMovies;
       var allCartoon;
@@ -1381,51 +1398,12 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var allMusical;
       allTvShows = videos.map(function (video, key) {
         if (video.video_type === "tv show") {
-          var className;
-
-          if (key < 3) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "container"
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              video: video,
-              key: key,
-              muted: true,
-              className: className
-            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              id: tid
-            }));
-          } else if (key >= 3 && key < 6) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "container"
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              video: video,
-              key: key,
-              muted: true,
-              className: className
-            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              id: tid
-            }));
-          } else {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "container"
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              video: video,
-              key: key,
-              muted: true,
-              className: className
-            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              setDropDown: _this2.setDropDown('tid'),
-              id: tid
-            }));
-          } // return (
-          //        <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className}/>
-          // )
-
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('tid'),
+            video: video,
+            key: key,
+            muted: true
+          });
         }
       });
       allMovies = videos.map(function (video, key) {
@@ -1441,6 +1419,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allCartoon = videos.map(function (video, key) {
         if (video.genre === "Cartoon") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('caid'),
             video: video,
             key: key,
             muted: true
@@ -1450,6 +1429,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allComedy = videos.map(function (video, key) {
         if (video.genre === "Comedy") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('coid'),
             video: video,
             key: key
           });
@@ -1458,6 +1438,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allDocumentary = videos.map(function (video, key) {
         if (video.genre === "Documentary") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('doid'),
             video: video,
             key: key
           });
@@ -1466,6 +1447,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allAction = videos.map(function (video, key) {
         if (video.genre === "Action") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('aid'),
             video: video,
             key: key
           });
@@ -1474,6 +1456,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allHorror = videos.map(function (video, key) {
         if (video.genre === "Horror") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('hid'),
             video: video,
             key: key
           });
@@ -1482,12 +1465,12 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allMusical = videos.map(function (video, key) {
         if (video.genre === "Musical") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('muid'),
             video: video,
             key: key
           });
         }
       });
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1502,6 +1485,48 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       }, allMovies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         setDropDown: this.setDropDown('mid'),
         id: mid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Cartoon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allCartoon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('caid'),
+        id: caid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allComedy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('coid'),
+        id: coid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Documentary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allDocumentary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('doid'),
+        id: doid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allAction), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('aid'),
+        id: aid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Horror"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allHorror), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('hid'),
+        id: hid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "category"
+      }, "Muscial"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allMusical), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('muid'),
+        id: muid
       }));
     }
   }]);
