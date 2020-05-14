@@ -41,7 +41,7 @@ class MyListIndex extends React.Component {
                 <div className="video-index-container">
                     <div className="pathname">My List</div>
 
-                    <div className="video-index-video-type">
+                    <div className="container">
                         {allVideos}
                     </div>
                     <div className="vt-video-index"></div>

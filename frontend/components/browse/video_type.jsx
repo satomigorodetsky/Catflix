@@ -2,14 +2,37 @@ import React from 'react';
 import NavBarContainer from '../navbar/navbar_container';
 import Footer from '../footer/footer';
 import VideoItemContainer from './video_item_container';
+import VideoDetailContainer from './video_detail_container';
 
 class VideoType extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hoveredVideo: false
+            hoveredVideo: false,
+            tid: null,
+            mid: null,
         }
+        this.setDropDown = this.setDropDown.bind(this)
     }
+
+
+    setDropDown(id) {
+        debugger
+        let that = this;
+        return (videoId) => {
+            debugger
+            that.setState({
+                tid: null,
+                mid: null
+            })
+            debugger
+            that.setState({
+                [id]: videoId
+            })
+            debugger
+        };
+    }
+
 
     componentDidMount() {
         
@@ -17,7 +40,6 @@ class VideoType extends React.Component {
     };
 
     render() {
-        
         const { videos, location } = this.props;
         const pathname = location.pathname === "/browse/tvshows" ? "TV Shows" : "Movies";
 
@@ -25,11 +47,12 @@ class VideoType extends React.Component {
         let allShows = ""; 
         let allMovies = "";
 
+
         if (location.pathname === "/browse/tvshows") {
             
             allShows = videos.map((video, key) => {
                 if (video.video_type === "tv show") {
-                    return <VideoItemContainer video={video} key={key} />
+                    return <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} />
                 }
             })
         }
@@ -37,12 +60,15 @@ class VideoType extends React.Component {
         if (location.pathname === "/browse/movies") {
             allMovies = videos.map((video, key) => {
                 if (video.video_type === "movie") {
-                    return <VideoItemContainer video={video} key={key} />
+                    return <VideoItemContainer setDropDown={this.setDropDown('mid')} video={video} key={key} />
                 }
             })
         }
 
        allVideos = location.pathname === "/browse/tvshows" ? allShows : allMovies;
+
+        let either;
+        either = "/browse/tvshows" ? "tid" : "mid"
         
         return (
             <div className="video-type-container">
@@ -50,9 +76,10 @@ class VideoType extends React.Component {
                 <div className="video-index-container">
                 <div className="pathname">{pathname}</div>
 
-                    <div className="video-index-video-type">
+                    <div className="container">
                         {allVideos}
                     </div>
+                    <VideoDetailContainer setDropDown={this.setDropDown({})} /> 
                     <div className="vt-video-index"></div>
 
 

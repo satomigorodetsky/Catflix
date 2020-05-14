@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
+
 class VideoItem extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +16,7 @@ class VideoItem extends React.Component {
         this.handleList = this.handleList.bind(this);
         this.openController = this.openController.bind(this);
         this.closeController = this.closeController.bind(this);
-        this.handleShowDetail = this.handleShowDetail.bind(this);
+        // this.handleShowDetail = this.handleShowDetail.bind(this);
         this.closeSection = this.closeSection.bind(this);
     }
 
@@ -55,7 +56,6 @@ class VideoItem extends React.Component {
     }
 
     closeSection() {
-        console.log("closing section")
         this.setState({
             showSection: false
         })
@@ -91,8 +91,6 @@ class VideoItem extends React.Component {
     openController () {
         return (e) => {
             e.preventDefault();
-        debugger
-
         this.setState({
             showController: true
         })
@@ -102,7 +100,6 @@ class VideoItem extends React.Component {
     closeController() {
         return (e) => {
             e.preventDefault();
-            debugger
 
             this.setState({
                 showController: false
@@ -112,9 +109,11 @@ class VideoItem extends React.Component {
 
 
     render(){
-        const { key, video, onlist } = this.props;
+        const { key, video, onlist, setDropDown } = this.props;
 
         const { showSection, showController } = this.state;
+
+
 
         let specialCombo;
         if (showSection && !showController) {
@@ -123,13 +122,25 @@ class VideoItem extends React.Component {
             specialCombo = ""
         }
 
-        const section = showSection ? (
-            <div className="index-section" >
-                <button onClick={() => this.closeSection()}><i class="fas fa-times"></i></button>
-            </div>
-        ) : (
-                <section className="index-section">DETAIls IS NOT SHOWING </section>
-        )
+        // const section = showSection ? (
+        //     <div id="myModal" className="modal">
+        //         <div className="modal-content">
+        //             <button onClick={() => this.closeSection()}><i className="fas fa-times"></i></button>
+        //             <div className="picture-and-des">
+        //                 <div className="index-des">
+        //                     <p>{video.title}</p>
+        //                     <p>{video.year}</p>
+        //                     <p>{video.duration}</p>
+        //                 </div>
+        //                 <div className="index-img">
+        //                     <img src={video.thumbnail} alt={video.title} />
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // ) : (
+        //     ""
+        // )
 
         const visibility = showController ? "now-you-see-me" : "now-you-dont"
 
@@ -142,14 +153,13 @@ class VideoItem extends React.Component {
         //             <i className="fas fa-volume-up"></i>
         //         </button>)
 
-        const listButton = onlist ?  <i className="fas fa-plus"></i> : 
-            <i className="fas fa-check"></i> ;
+        const listButton = onlist ?  <i className="fas fa-check"></i> : 
+            <i className="fas fa-plus"></i> ;
 
         const pathname = this.props.location.pathname;
 
 
-        if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || 
-            pathname == "/search" || pathname === "/browse/mylist" || pathname === "/browse")  {
+        if (pathname == "/search" || pathname === "/browse")  {
             
             return (
                 <>
@@ -157,27 +167,35 @@ class VideoItem extends React.Component {
                         <div className={`video-controller ${visibility}`}>
                             <button className="play-index-button"><Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i></Link></button>
                             <button className="list-index-button" onClick={this.handleList(video.id)}>{listButton}</button>
-                            <div className="detail-index-button" onClick={this.handleShowDetail()}><i className="fas fa-angle-down"></i></div>
+                            <div className="detail-index-button" onClick={() => setDropDown(video.id)}><i className="fas fa-angle-down"></i></div>
                              <p className="video-index-title">{video.title}</p>
                         </div>
                         <video className="video-rows" src={video.url} muted={true} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
                         onMouseOut={event => event.currentTarget.pause()} >
                      </video> 
-                        {section}
-
                 </div>
+
                 </>
             )
-        }
+        } else if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist" ) {
+
+                return (
+
+                    <div className={`item ${specialCombo}`} key={key} onMouseEnter={this.openController()} onMouseLeave={this.closeController()} >
+                        <div className={`video-controller ${visibility}`}>
+                            <button className="play-index-button"><Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i></Link></button>
+                            <button className="list-index-button" onClick={this.handleList(video.id)}>{listButton}</button>
+                            <p className="video-index-title">{video.title}</p>
+                        </div>
+                        <video className="video-rows" src={video.url} muted={true} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
+                            onMouseOut={event => event.currentTarget.pause()} >
+                        </video>
+                    </div>
+                )
+            }
 
     }
 }
 
 export default withRouter(VideoItem);
 
-  // <div className="video-container" key={key}>
-                    //     <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-                    //         onMouseOut={event => event.currentTarget.pause()} ></video>
-                    // <Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i>&nbsp;Play</Link>
-                    // <div className="button-div" onClick={this.handleList()}>{listButton} &nbsp;My List</div>
-                    // </div>

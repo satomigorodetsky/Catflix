@@ -427,6 +427,140 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/browse/video_detail.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/browse/video_detail.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var VideoDetail = /*#__PURE__*/function (_React$Component) {
+  _inherits(VideoDetail, _React$Component);
+
+  var _super = _createSuper(VideoDetail);
+
+  function VideoDetail(props) {
+    var _this;
+
+    _classCallCheck(this, VideoDetail);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      showSection: true
+    }; //   this.toggleMute = this.toggleMute.bind(this);
+
+    return _this;
+  }
+
+  _createClass(VideoDetail, [{
+    key: "render",
+    value: function render() {
+      debugger;
+      var _this$props = this.props,
+          video = _this$props.video,
+          setDropDown = _this$props.setDropDown;
+
+      if (video) {
+        debugger;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: function onClick() {
+            return setDropDown(null);
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-times close-detail"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-detail"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-img"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: video.thumbnail,
+          alt: video.title
+        })));
+      } else {
+        debugger;
+        return "";
+      }
+    }
+  }]);
+
+  return VideoDetail;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (VideoDetail);
+
+/***/ }),
+
+/***/ "./frontend/components/browse/video_detail_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/browse/video_detail_container.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _video_detail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./video_detail */ "./frontend/components/browse/video_detail.jsx");
+/* harmony import */ var _actions_list_video_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/list_video_actions */ "./frontend/actions/list_video_actions.js");
+
+
+
+
+var mstp = function mstp(state, ownProps) {
+  var videoId = ownProps.id;
+  return {
+    video: state.entities.videos[videoId]
+  };
+};
+
+var mdtp = function mdtp(dispatch) {
+  return {
+    addToMyList: function addToMyList(videoId) {
+      return dispatch(Object(_actions_list_video_actions__WEBPACK_IMPORTED_MODULE_2__["addToMyList"])(videoId));
+    },
+    removeFromMyList: function removeFromMyList(videoId) {
+      return dispatch(Object(_actions_list_video_actions__WEBPACK_IMPORTED_MODULE_2__["removeFromMyList"])(videoId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mstp, mdtp)(_video_detail__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/browse/video_index.jsx":
 /*!****************************************************!*\
   !*** ./frontend/components/browse/video_index.jsx ***!
@@ -604,8 +738,8 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
     _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
     _this.openController = _this.openController.bind(_assertThisInitialized(_this));
-    _this.closeController = _this.closeController.bind(_assertThisInitialized(_this));
-    _this.handleShowDetail = _this.handleShowDetail.bind(_assertThisInitialized(_this));
+    _this.closeController = _this.closeController.bind(_assertThisInitialized(_this)); // this.handleShowDetail = this.handleShowDetail.bind(this);
+
     _this.closeSection = _this.closeSection.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -658,7 +792,6 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "closeSection",
     value: function closeSection() {
-      console.log("closing section");
       this.setState({
         showSection: false
       });
@@ -688,7 +821,6 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         e.preventDefault();
-        debugger;
 
         _this4.setState({
           showController: true
@@ -702,7 +834,6 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
       return function (e) {
         e.preventDefault();
-        debugger;
 
         _this5.setState({
           showController: false
@@ -712,12 +843,11 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
-
       var _this$props2 = this.props,
           key = _this$props2.key,
           video = _this$props2.video,
-          onlist = _this$props2.onlist;
+          onlist = _this$props2.onlist,
+          setDropDown = _this$props2.setDropDown;
       var _this$state = this.state,
           showSection = _this$state.showSection,
           showController = _this$state.showController;
@@ -727,19 +857,27 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
         specialCombo = "specialItem";
       } else {
         specialCombo = "";
-      }
+      } // const section = showSection ? (
+      //     <div id="myModal" className="modal">
+      //         <div className="modal-content">
+      //             <button onClick={() => this.closeSection()}><i className="fas fa-times"></i></button>
+      //             <div className="picture-and-des">
+      //                 <div className="index-des">
+      //                     <p>{video.title}</p>
+      //                     <p>{video.year}</p>
+      //                     <p>{video.duration}</p>
+      //                 </div>
+      //                 <div className="index-img">
+      //                     <img src={video.thumbnail} alt={video.title} />
+      //                 </div>
+      //             </div>
+      //         </div>
+      //     </div>
+      // ) : (
+      //     ""
+      // )
 
-      var section = showSection ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this6.closeSection();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-times"
-      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "index-section"
-      }, "DETAIls IS NOT SHOWING ");
+
       var visibility = showController ? "now-you-see-me" : "now-you-dont"; // const audio = muted ?
       //     (<button className="mute-button" onClick={this.toggleMute}>
       //         <i className="fas fa-volume-mute"></i>
@@ -750,13 +888,13 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       //         </button>)
 
       var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-plus"
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-check"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-plus"
       });
       var pathname = this.props.location.pathname;
 
-      if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname == "/search" || pathname === "/browse/mylist" || pathname === "/browse") {
+      if (pathname == "/search" || pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "item ".concat(specialCombo),
           key: key,
@@ -775,7 +913,9 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           onClick: this.handleList(video.id)
         }, listButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "detail-index-button",
-          onClick: this.handleShowDetail()
+          onClick: function onClick() {
+            return setDropDown(video.id);
+          }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-angle-down"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -792,7 +932,39 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           onMouseOut: function onMouseOut(event) {
             return event.currentTarget.pause();
           }
-        }), section));
+        })));
+      } else if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist") {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "item ".concat(specialCombo),
+          key: key,
+          onMouseEnter: this.openController(),
+          onMouseLeave: this.closeController()
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-controller ".concat(visibility)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "play-index-button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/browse/".concat(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-play video-div"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "list-index-button",
+          onClick: this.handleList(video.id)
+        }, listButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "video-index-title"
+        }, video.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+          className: "video-rows",
+          src: video.url,
+          muted: true,
+          onMouseEnter: function onMouseEnter(event) {
+            return event.currentTarget.play();
+          },
+          preload: "true",
+          poster: video.thumbnail,
+          onMouseOut: function onMouseOut(event) {
+            return event.currentTarget.pause();
+          }
+        }));
       }
     }
   }]);
@@ -800,12 +972,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
   return VideoItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(VideoItem)); // <div className="video-container" key={key}>
-//     <video className="flex-row" src={video.url} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}
-//         onMouseOut={event => event.currentTarget.pause()} ></video>
-// <Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i>&nbsp;Play</Link>
-// <div className="button-div" onClick={this.handleList()}>{listButton} &nbsp;My List</div>
-// </div>
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(VideoItem));
 
 /***/ }),
 
@@ -1090,7 +1257,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _video_item_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./video_item_container */ "./frontend/components/browse/video_item_container.js");
+/* harmony import */ var _video_detail_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./video_detail_container */ "./frontend/components/browse/video_detail_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1115,21 +1285,52 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VideoRows = /*#__PURE__*/function (_React$Component) {
   _inherits(VideoRows, _React$Component);
 
   var _super = _createSuper(VideoRows);
 
-  function VideoRows() {
+  function VideoRows(props) {
+    var _this;
+
     _classCallCheck(this, VideoRows);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      tid: null,
+      mid: null
+    };
+    _this.setDropDown = _this.setDropDown.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(VideoRows, [{
+    key: "setDropDown",
+    value: function setDropDown(id) {
+      debugger;
+      var that = this;
+      return function (videoId) {
+        debugger;
+        that.setState({
+          tid: null,
+          mid: null
+        });
+        debugger;
+        that.setState(_defineProperty({}, id, videoId));
+        debugger;
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      debugger;
       var videos = this.props.videos;
+      var _this$state = this.state,
+          tid = _this$state.tid,
+          mid = _this$state.mid;
       var allTvShows;
       var allMovies;
       var allCartoon;
@@ -1138,9 +1339,15 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var allAction;
       var allHorror;
       var allMusical;
+      var pickedVideo;
       allTvShows = videos.map(function (video, key) {
+        debugger;
+
         if (video.video_type === "tv show") {
+          debugger;
+          pickedVideo = video;
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('tid'),
             video: video,
             key: key,
             muted: true
@@ -1150,6 +1357,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       allMovies = videos.map(function (video, key) {
         if (video.video_type === "movie") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            setDropDown: _this2.setDropDown('mid'),
             video: video,
             key: key,
             muted: true
@@ -1205,15 +1413,22 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           });
         }
       });
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, allTvShows), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, allTvShows), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('tid'),
+        id: tid
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "Movies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, allMovies));
+      }, allMovies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setDropDown: this.setDropDown('mid'),
+        id: mid
+      }));
     }
   }]);
 
@@ -1463,7 +1678,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../footer/footer */ "./frontend/components/footer/footer.jsx");
 /* harmony import */ var _video_item_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./video_item_container */ "./frontend/components/browse/video_item_container.js");
+/* harmony import */ var _video_detail_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./video_detail_container */ "./frontend/components/browse/video_detail_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1490,6 +1708,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VideoType = /*#__PURE__*/function (_React$Component) {
   _inherits(VideoType, _React$Component);
 
@@ -1502,12 +1721,31 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      hoveredVideo: false
+      hoveredVideo: false,
+      tid: null,
+      mid: null
     };
+    _this.setDropDown = _this.setDropDown.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(VideoType, [{
+    key: "setDropDown",
+    value: function setDropDown(id) {
+      debugger;
+      var that = this;
+      return function (videoId) {
+        debugger;
+        that.setState({
+          tid: null,
+          mid: null
+        });
+        debugger;
+        that.setState(_defineProperty({}, id, videoId));
+        debugger;
+      };
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchVideos();
@@ -1515,6 +1753,8 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           videos = _this$props.videos,
           location = _this$props.location;
@@ -1527,6 +1767,7 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
         allShows = videos.map(function (video, key) {
           if (video.video_type === "tv show") {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
               video: video,
               key: key
             });
@@ -1538,6 +1779,7 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
         allMovies = videos.map(function (video, key) {
           if (video.video_type === "movie") {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              setDropDown: _this2.setDropDown('mid'),
               video: video,
               key: key
             });
@@ -1546,6 +1788,8 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
       }
 
       allVideos = location.pathname === "/browse/tvshows" ? allShows : allMovies;
+      var either;
+      either = "/browse/tvshows" ? "tid" : undefined;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-type-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1553,8 +1797,10 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pathname"
       }, pathname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index-video-type"
-      }, allVideos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, allVideos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        setDropDown: this.setDropDown({})
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vt-video-index"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
@@ -1784,7 +2030,7 @@ var MyListIndex = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pathname"
       }, "My List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index-video-type"
+        className: "container"
       }, allVideos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vt-video-index"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

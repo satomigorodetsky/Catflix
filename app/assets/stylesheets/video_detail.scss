@@ -1,0 +1,41 @@
+
+.info-container {
+  color: white;
+  background-color: black;
+  display: flex;
+  place-content: flex-end;
+  flex-direction: row;
+}
+
+.close-detail {
+    position: absolute;
+    right: 60px;
+    padding-top: 2%;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+        z-index: 25;
+}
+
+.video-detail {
+    position: absolute;
+    left: 4%;
+    margin-top: 2%;
+}
+
+.video-img {
+    display: block;
+    width: auto;
+    height: 400px;
+}
+
+
+.video-img:after {
+display: block;
+    position: relative;
+    background-image: linear-gradient(to left, transparent 0%, black 100%);
+    margin-top: -500px;
+    height: 500px;
+    width: 100%;
+    content: '';
+}

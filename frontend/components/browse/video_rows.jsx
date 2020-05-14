@@ -1,10 +1,42 @@
 import React from 'react';
 import VideoItemContainer from './video_item_container';
+import VideoDetailContainer from './video_detail_container';
 
 class VideoRows extends React.Component {
 
+       constructor(props) {
+              super(props) 
+              this.state = {
+                     tid: null,
+                     mid: null,
+              }
+              this.setDropDown = this.setDropDown.bind(this)
+       }
+
+
+       setDropDown(id) {
+              debugger
+              let that = this;
+              return (videoId) => {
+                     debugger
+                     that.setState({
+                            tid: null,
+                            mid: null
+                     })
+                     debugger
+                     that.setState({
+                        [id]: videoId
+                     })
+                     debugger
+              };
+       }
+
+
+
     render () {
+           debugger
        const { videos } = this.props;
+       const { tid, mid } = this.state;
 
        let allTvShows;
        let allMovies;
@@ -16,17 +48,24 @@ class VideoRows extends React.Component {
        let allMusical;
 
 
+       let pickedVideo;
+
        allTvShows = videos.map((video, key) => {
+              debugger
               if (video.video_type === "tv show") {
-                     return <VideoItemContainer video={video} key={key} muted={true} />
+                     debugger
+
+                     pickedVideo = video
+                     return (
+                            <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} />
+                     )
               }
        })
 
        allMovies = videos.map((video, key) => {
               if (video.video_type === "movie") {
                      return (
-                                   <VideoItemContainer video={video} key={key} muted={true} />
-              
+                            <VideoItemContainer setDropDown={this.setDropDown('mid')} video={video} key={key} muted={true} />
                      )
               }
        })
@@ -65,17 +104,20 @@ class VideoRows extends React.Component {
                      return <VideoItemContainer video={video} key={key} />
               }
        })
+       debugger
        return (
               <>
                      <div className="category">TV Shows</div>
                      <div className="container">
-                            {allTvShows}  
+                            {allTvShows} 
                      </div> 
+                     <VideoDetailContainer setDropDown={this.setDropDown('tid')} id={tid}/> 
                      
                      <div className="category">Movies</div>
                      <div className="container">
-                            {allMovies}  
+                            {allMovies} 
                      </div> 
+                     <VideoDetailContainer setDropDown={this.setDropDown('mid')} id={mid} /> 
                      {/* <div className="category">Cartoon</div>
                      <div className="container">
                             {allCartoon}
