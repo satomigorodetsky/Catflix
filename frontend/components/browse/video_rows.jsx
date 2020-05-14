@@ -47,18 +47,42 @@ class VideoRows extends React.Component {
        let allHorror;
        let allMusical;
 
-
-       let pickedVideo;
-
        allTvShows = videos.map((video, key) => {
               
               if (video.video_type === "tv show") {
-                     
+                      let className;
+                     if ( key < 3 ) {
+                            return (
+                                   <>
+                                          <div className="container">
+                                                 <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className} />
+                                          </div>
+                                          <VideoDetailContainer setDropDown={this.setDropDown('tid')} id={tid} /> 
+                                   </>
+                            )
+                     } else if (key >= 3 && key < 6 ) {
+                            return (
+                                   <>
+                                          <div className="container">
+                                                 <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className} />
+                                          </div>
+                                          <VideoDetailContainer setDropDown={this.setDropDown('tid')} id={tid} />
+                                   </>
+                            )
+                     } else {
+                            return (
+                                   <>
+                                          <div className="container">
+                                                 <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className} />
+                                          </div>
+                                          <VideoDetailContainer setDropDown={this.setDropDown('tid')} id={tid} />
+                                   </>
+                            )
+                     }
 
-                     pickedVideo = video
-                     return (
-                            <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} />
-                     )
+                     // return (
+                     //        <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className}/>
+                     // )
               }
        })
 
@@ -104,6 +128,7 @@ class VideoRows extends React.Component {
                      return <VideoItemContainer video={video} key={key} />
               }
        })
+       debugger
        
        return (
               <>

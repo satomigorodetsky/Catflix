@@ -109,7 +109,7 @@ class VideoItem extends React.Component {
 
 
     render(){
-        const { key, video, onlist, setDropDown } = this.props;
+        const { key, video, onlist, setDropDown, className } = this.props;
 
         const { showSection, showController } = this.state;
 
@@ -163,7 +163,7 @@ class VideoItem extends React.Component {
             
             return (
                 <>
-                <div className={`item ${specialCombo}`} key={key} onMouseEnter={this.openController()} onMouseLeave={this.closeController()} >
+                    <div className={`item ${specialCombo} ${className}`} key={key} onMouseEnter={this.openController()} onMouseLeave={this.closeController()} >
                         <div className={`video-controller ${visibility}`}>
                             <button className="play-index-button"><Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i></Link></button>
                             <button className="list-index-button" onClick={this.handleList(video.id)}>{listButton}</button>

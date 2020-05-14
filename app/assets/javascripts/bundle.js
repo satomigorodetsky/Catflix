@@ -893,7 +893,8 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           key = _this$props2.key,
           video = _this$props2.video,
           onlist = _this$props2.onlist,
-          setDropDown = _this$props2.setDropDown;
+          setDropDown = _this$props2.setDropDown,
+          className = _this$props2.className;
       var _this$state = this.state,
           showSection = _this$state.showSection,
           showController = _this$state.showController;
@@ -942,7 +943,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
       if (pathname == "/search" || pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "item ".concat(specialCombo),
+          className: "item ".concat(specialCombo, " ").concat(className),
           key: key,
           onMouseEnter: this.openController(),
           onMouseLeave: this.closeController()
@@ -1378,16 +1379,53 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var allAction;
       var allHorror;
       var allMusical;
-      var pickedVideo;
       allTvShows = videos.map(function (video, key) {
         if (video.video_type === "tv show") {
-          pickedVideo = video;
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('tid'),
-            video: video,
-            key: key,
-            muted: true
-          });
+          var className;
+
+          if (key < 3) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "container"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              video: video,
+              key: key,
+              muted: true,
+              className: className
+            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              id: tid
+            }));
+          } else if (key >= 3 && key < 6) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "container"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              video: video,
+              key: key,
+              muted: true,
+              className: className
+            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              id: tid
+            }));
+          } else {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "container"
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              video: video,
+              key: key,
+              muted: true,
+              className: className
+            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              setDropDown: _this2.setDropDown('tid'),
+              id: tid
+            }));
+          } // return (
+          //        <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} className={className}/>
+          // )
+
         }
       });
       allMovies = videos.map(function (video, key) {
@@ -1449,6 +1487,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           });
         }
       });
+      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
