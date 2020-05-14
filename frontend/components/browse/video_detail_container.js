@@ -3,10 +3,16 @@ import VideoDetail from './video_detail';
 import { addToMyList, removeFromMyList } from '../../actions/list_video_actions';
 
 
+
 const mstp = (state, ownProps) => {
+    const users = state.entities.users
+    const currentUserId = state.session.currentUser
     const videoId = ownProps.id
-        return {
-        video: state.entities.videos[videoId]
+    const onlist = users[currentUserId].listVideoIds.includes(videoId) ? true : false;
+
+    return {
+        video: state.entities.videos[videoId],
+        onlist
     }
 
 };

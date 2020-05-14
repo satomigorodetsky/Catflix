@@ -477,18 +477,41 @@ var VideoDetail = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       showSection: true
-    }; //   this.toggleMute = this.toggleMute.bind(this);
-
+    };
+    _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(VideoDetail, [{
+    key: "handleList",
+    value: function handleList(id) {
+      var _this$props = this.props,
+          onlist = _this$props.onlist,
+          addToMyList = _this$props.addToMyList,
+          removeFromMyList = _this$props.removeFromMyList;
+      return function (e) {
+        e.preventDefault();
+
+        if (onlist) {
+          removeFromMyList(id);
+        } else {
+          addToMyList(id);
+        }
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       debugger;
-      var _this$props = this.props,
-          video = _this$props.video,
-          setDropDown = _this$props.setDropDown;
+      var _this$props2 = this.props,
+          video = _this$props2.video,
+          setDropDown = _this$props2.setDropDown,
+          onlist = _this$props2.onlist;
+      var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-plus"
+      });
 
       if (video) {
         debugger;
@@ -502,7 +525,10 @@ var VideoDetail = /*#__PURE__*/function (_React$Component) {
           className: "fas fa-times close-detail"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "video-detail"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "main-list-button",
+          onClick: this.handleList(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton, " \xA0My List"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "video-img"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: video.thumbnail,
@@ -540,9 +566,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mstp = function mstp(state, ownProps) {
+  var users = state.entities.users;
+  var currentUserId = state.session.currentUser;
   var videoId = ownProps.id;
+  var onlist = users[currentUserId].listVideoIds.includes(videoId) ? true : false;
   return {
-    video: state.entities.videos[videoId]
+    video: state.entities.videos[videoId],
+    onlist: onlist
   };
 };
 
@@ -1101,7 +1131,6 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
     value: function handleList(id) {
       var _this$props = this.props,
           onlist = _this$props.onlist,
-          videoId = _this$props.videoId,
           addToMyList = _this$props.addToMyList,
           removeFromMyList = _this$props.removeFromMyList;
       return function (e) {
@@ -1146,9 +1175,9 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-volume-up"
       }));
       var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-plus"
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-check"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-plus"
       });
       var allVideos = videos.map(function (video, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

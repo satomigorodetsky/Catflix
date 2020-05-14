@@ -21,7 +21,7 @@ class VideoMain extends React.Component {
 
     handleList(id) {
          
-        const { onlist, videoId, addToMyList, removeFromMyList } = this.props;
+        const { onlist, addToMyList, removeFromMyList } = this.props;
         return (e) => {
 
             e.preventDefault();
@@ -64,8 +64,8 @@ class VideoMain extends React.Component {
                 <i className="fas fa-volume-up"></i>
             </button> )
 
-        const listButton = onlist ? <i className="fas fa-plus"></i> :
-            <i className="fas fa-check"></i>;
+        const listButton = onlist ? <i className="fas fa-check"></i> :
+            <i className="fas fa-plus"></i>;
 
 
         const allVideos = videos.map((video,i) => {

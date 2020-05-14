@@ -7,12 +7,30 @@ class VideoDetail extends React.Component {
        this.state = {
            showSection: true,
        };
-    //   this.toggleMute = this.toggleMute.bind(this);
+        this.handleList = this.handleList.bind(this);
+    }
+
+    handleList(id) {
+        const { onlist, addToMyList, removeFromMyList } = this.props;
+        return (e) => {
+            e.preventDefault();
+            if (onlist) {
+                removeFromMyList(id);
+            } else {
+
+                addToMyList(id)
+            }
+        }
     }
 
     render () {
         debugger
-        const { video, setDropDown } = this.props;
+        const { video, setDropDown, onlist } = this.props;
+
+        const listButton = onlist ? <i className="fas fa-check"></i> :
+            <i className="fas fa-plus"></i>;
+
+
         if (video) {
             debugger
             return (
@@ -22,6 +40,7 @@ class VideoDetail extends React.Component {
                         <p>{video.title}</p>
                         <p>{video.year}</p>
                         <p>{video.description}</p>
+                        <button className="main-list-button" onClick={this.handleList(video.id)}><div>{listButton} &nbsp;My List</div></button>
                     </div>
                     <div className="video-img">
                         <img src={video.thumbnail} alt={video.title} />
