@@ -68,24 +68,24 @@ class VideoItem extends React.Component {
         // // I need to set state for every single elements somehow.
         // e.preventDefault();
 
-        // debugger
+        // 
 
         // let videoEl = document.getElementsByClassName("video-rows");
 
         // let i = 0;
         // for (i = 0; i < videoEl.length; i++) {
-        //     debugger
+        //     
         //     let eachVid = videoEl[i]; 
-        //     debugger
+        //     
 
         //     this.setState(prevState => {
-        //         debugger 
+        //          
         //     });
 
         //     eachVid.muted = !eachVid.muted;
         // }
 
-        // debugger
+        // 
     }
 
     openController () {

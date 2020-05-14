@@ -24,7 +24,7 @@ class VideoDetail extends React.Component {
     }
 
     render () {
-        debugger
+        
         const { video, setDropDown, onlist } = this.props;
 
         const listButton = onlist ? <i className="fas fa-check"></i> :
@@ -32,23 +32,30 @@ class VideoDetail extends React.Component {
 
 
         if (video) {
-            debugger
+            
             return (
                 <div className="info-container">
                     <div onClick={() => setDropDown(null)}><i className="fas fa-times close-detail"></i></div>
                     <div className="video-detail">
-                        <p>{video.title}</p>
-                        <p>{video.year}</p>
-                        <p>{video.description}</p>
-                        <button className="main-list-button" onClick={this.handleList(video.id)}><div>{listButton} &nbsp;My List</div></button>
+                        <div className="inner">
+                            <div className="inner1" >
+                                <p className="video-detail-title" >{video.title}</p>
+                                <p className="video-detail-year">{video.year}</p>
+                                <p className="video-detail-des">{video.description}</p>
+                            </div>
+                            <div className="video-detail-innder2">
+                                <button className="detail-play-button"><Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i>&nbsp;&nbsp;Play</Link></button>
+                                <button className="detail-list-button" onClick={this.handleList(video.id)}><div>{listButton} &nbsp;My List</div></button>
+                            </div>     
+                        </div>
                     </div>
                     <div className="video-img">
-                        <img src={video.thumbnail} alt={video.title} />
+                        <img className="video-img" src={video.thumbnail} alt={video.title} />
                     </div>
                 </div>
             )
          } else {
-             debugger
+             
              return "";
          }
         }

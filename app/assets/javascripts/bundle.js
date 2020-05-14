@@ -502,7 +502,6 @@ var VideoDetail = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var _this$props2 = this.props,
           video = _this$props2.video,
           setDropDown = _this$props2.setDropDown,
@@ -514,7 +513,6 @@ var VideoDetail = /*#__PURE__*/function (_React$Component) {
       });
 
       if (video) {
-        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -525,17 +523,35 @@ var VideoDetail = /*#__PURE__*/function (_React$Component) {
           className: "fas fa-times close-detail"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "video-detail"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, video.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "main-list-button",
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "inner"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "inner1"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "video-detail-title"
+        }, video.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "video-detail-year"
+        }, video.year), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "video-detail-des"
+        }, video.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "video-detail-innder2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "detail-play-button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/browse/".concat(video.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-play video-div"
+        }), "\xA0\xA0Play")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "detail-list-button",
           onClick: this.handleList(video.id)
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton, " \xA0My List"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, listButton, " \xA0My List"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "video-img"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "video-img",
           src: video.thumbnail,
           alt: video.title
         })));
       } else {
-        debugger;
         return "";
       }
     }
@@ -830,19 +846,19 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
     key: "toggleMute",
     value: function toggleMute(e) {// // I need to set state for every single elements somehow.
       // e.preventDefault();
-      // debugger
+      // 
       // let videoEl = document.getElementsByClassName("video-rows");
       // let i = 0;
       // for (i = 0; i < videoEl.length; i++) {
-      //     debugger
+      //     
       //     let eachVid = videoEl[i]; 
-      //     debugger
+      //     
       //     this.setState(prevState => {
-      //         debugger 
+      //          
       //     });
       //     eachVid.muted = !eachVid.muted;
       // }
-      // debugger
+      // 
     }
   }, {
     key: "openController",
@@ -1148,7 +1164,6 @@ var VideoMain = /*#__PURE__*/function (_React$Component) {
     value: function toggleMute(e) {
       e.preventDefault();
       var videoEl = document.getElementsByClassName("main-video")[0];
-      debugger;
       this.setState({
         muted: !this.state.muted
       });
@@ -1337,17 +1352,13 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
   _createClass(VideoRows, [{
     key: "setDropDown",
     value: function setDropDown(id) {
-      debugger;
       var that = this;
       return function (videoId) {
-        debugger;
         that.setState({
           tid: null,
           mid: null
         });
-        debugger;
         that.setState(_defineProperty({}, id, videoId));
-        debugger;
       };
     }
   }, {
@@ -1355,7 +1366,6 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      debugger;
       var videos = this.props.videos;
       var _this$state = this.state,
           tid = _this$state.tid,
@@ -1370,10 +1380,7 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var allMusical;
       var pickedVideo;
       allTvShows = videos.map(function (video, key) {
-        debugger;
-
         if (video.video_type === "tv show") {
-          debugger;
           pickedVideo = video;
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
             setDropDown: _this2.setDropDown('tid'),
@@ -1442,7 +1449,6 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
           });
         }
       });
-      debugger;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "category"
       }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1587,7 +1593,6 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
         }, 4000);
       };
 
-      debugger;
       showArrow();
     }
   }, {
@@ -1761,17 +1766,13 @@ var VideoType = /*#__PURE__*/function (_React$Component) {
   _createClass(VideoType, [{
     key: "setDropDown",
     value: function setDropDown(id) {
-      debugger;
       var that = this;
       return function (videoId) {
-        debugger;
         that.setState({
           tid: null,
           mid: null
         });
-        debugger;
         that.setState(_defineProperty({}, id, videoId));
-        debugger;
       };
     }
   }, {
@@ -2291,7 +2292,6 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleInput",
     value: function handleInput(e) {
-      debugger;
       var query = e.currentTarget.value;
       this.setState({
         query: query

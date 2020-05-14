@@ -15,26 +15,26 @@ class VideoRows extends React.Component {
 
 
        setDropDown(id) {
-              debugger
+              
               let that = this;
               return (videoId) => {
-                     debugger
+                     
                      that.setState({
                             tid: null,
                             mid: null
                      })
-                     debugger
+                     
                      that.setState({
                         [id]: videoId
                      })
-                     debugger
+                     
               };
        }
 
 
 
     render () {
-           debugger
+           
        const { videos } = this.props;
        const { tid, mid } = this.state;
 
@@ -51,9 +51,9 @@ class VideoRows extends React.Component {
        let pickedVideo;
 
        allTvShows = videos.map((video, key) => {
-              debugger
+              
               if (video.video_type === "tv show") {
-                     debugger
+                     
 
                      pickedVideo = video
                      return (
@@ -104,7 +104,7 @@ class VideoRows extends React.Component {
                      return <VideoItemContainer video={video} key={key} />
               }
        })
-       debugger
+       
        return (
               <>
                      <div className="category">TV Shows</div>

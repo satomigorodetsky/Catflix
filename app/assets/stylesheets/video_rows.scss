@@ -78,7 +78,7 @@
 
 .container {
   display: flex;
-  padding-left: 100px;
+  padding: 50px 0 30px 50px;
   height: 380px;
 }
 
@@ -98,15 +98,15 @@
 }
 
 .container:hover .item {
-   transform: translateX(-25%);
+   transform: translateX(-15%);
 }
 
 .item:hover ~ .item {
-   transform: translateX(25%);
+   transform: translateX(15%);
 }
 
 .item:hover {
-  transform: scale(1.5) !important;
+  transform: scale(1.2) !important;
 }
 
 .specialItem {

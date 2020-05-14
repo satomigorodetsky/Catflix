@@ -30,7 +30,7 @@ class NavBar extends React.Component {
   }
 
   handleInput(e) {
-    debugger
+    
     let query = e.currentTarget.value;
     this.setState({
       query

@@ -32,7 +32,7 @@ class VideoShow extends React.Component {
             clearTimeout(this.clearArrow);
             this.clearArrow = setTimeout(() => this.setState({ mouseMoving: false}), 4000)
         }
-        debugger
+        
         showArrow();
     }
 

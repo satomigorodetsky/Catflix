@@ -41,7 +41,7 @@ class VideoMain extends React.Component {
 
         let videoEl = document.getElementsByClassName("main-video")[0];
 
-        debugger
+        
 
         this.setState({
             muted: !this.state.muted

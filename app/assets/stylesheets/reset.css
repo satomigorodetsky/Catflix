@@ -9,6 +9,10 @@ span, article, footer, time, small {
   outline: 0;
 }
 
+html {
+  background-color: black;
+}
+
 ul {
   list-style: none;
 }

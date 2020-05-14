@@ -17,19 +17,19 @@ class VideoType extends React.Component {
 
 
     setDropDown(id) {
-        debugger
+        
         let that = this;
         return (videoId) => {
-            debugger
+            
             that.setState({
                 tid: null,
                 mid: null
             })
-            debugger
+            
             that.setState({
                 [id]: videoId
             })
-            debugger
+            
         };
     }
 

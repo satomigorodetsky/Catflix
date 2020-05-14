@@ -41,9 +41,9 @@
     border-radius: 50%;
     z-index: 11;
     border: 1.5px solid white;
-    position: relative;
-    left: -180px;
-    top: 150px;
+    position: absolute;
+    left: 5%;
+    top: 80px;
 }
 
 .play-index-button > a {
@@ -60,9 +60,9 @@
     background-color: rgba(133, 133, 133, 0.6);
     border-radius: 50%;
     border: 1.8px solid white;
-    position: absolute;
-    right: 10px;
-    top: 200px;
+     position: absolute;
+    right: 5%;
+    top: 150px;
 }
 
 .list-index-button:hover {
@@ -73,9 +73,9 @@
 .detail-index-button {
     color: white;
     font-size: 4em;
-    position: absolute;
-    top: 487%;
-    left: 200px;
+      position: absolute;
+    left: 45%;
+    top: 200px;
 }
 
 .detail-index-button:hover {
@@ -92,8 +92,8 @@
     font-family: sans-serif;
     font-size: 1.5rem;
     position: absolute;
-    top: 225px;
-    left: 20px;
+    top: 140px;
+    left: 5%;
 }
 
 .index-section {
@@ -109,6 +109,7 @@
 
 .now-you-dont {
     visibility: hidden;
+    position: relative;
 }
 
 .now-you-see-me {
