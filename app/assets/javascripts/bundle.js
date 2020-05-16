@@ -777,16 +777,12 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       hoveredVideo: false,
-      // muted: true,
       showController: false,
       showSection: false
     };
-    _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.handleList = _this.handleList.bind(_assertThisInitialized(_this));
     _this.openController = _this.openController.bind(_assertThisInitialized(_this));
-    _this.closeController = _this.closeController.bind(_assertThisInitialized(_this)); // this.handleShowDetail = this.handleShowDetail.bind(this);
-
-    _this.closeSection = _this.closeSection.bind(_assertThisInitialized(_this));
+    _this.closeController = _this.closeController.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -815,60 +811,14 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "handleShowDetail",
-    value: function handleShowDetail() {
-      var _this3 = this;
-
-      var showSection = this.state.showSection;
-      return function (e) {
-        e.preventDefault();
-
-        if (!showSection) {
-          _this3.setState({
-            showSection: true,
-            showController: false
-          });
-        } else {
-          _this3.setState({
-            showSection: false
-          });
-        }
-      };
-    }
-  }, {
-    key: "closeSection",
-    value: function closeSection() {
-      this.setState({
-        showSection: false
-      });
-    }
-  }, {
-    key: "toggleMute",
-    value: function toggleMute(e) {// // I need to set state for every single elements somehow.
-      // e.preventDefault();
-      // 
-      // let videoEl = document.getElementsByClassName("video-rows");
-      // let i = 0;
-      // for (i = 0; i < videoEl.length; i++) {
-      //     
-      //     let eachVid = videoEl[i]; 
-      //     
-      //     this.setState(prevState => {
-      //          
-      //     });
-      //     eachVid.muted = !eachVid.muted;
-      // }
-      // 
-    }
-  }, {
     key: "openController",
     value: function openController() {
-      var _this4 = this;
+      var _this3 = this;
 
       return function (e) {
         e.preventDefault();
 
-        _this4.setState({
+        _this3.setState({
           showController: true
         });
       };
@@ -876,12 +826,12 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "closeController",
     value: function closeController() {
-      var _this5 = this;
+      var _this4 = this;
 
       return function (e) {
         e.preventDefault();
 
-        _this5.setState({
+        _this4.setState({
           showController: false
         });
       };
@@ -894,45 +844,8 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
           video = _this$props2.video,
           onlist = _this$props2.onlist,
           setDropDown = _this$props2.setDropDown;
-      var _this$state = this.state,
-          showSection = _this$state.showSection,
-          showController = _this$state.showController;
-      var specialCombo;
-
-      if (showSection && !showController) {
-        specialCombo = "specialItem";
-      } else {
-        specialCombo = "";
-      } // const section = showSection ? (
-      //     <div id="myModal" className="modal">
-      //         <div className="modal-content">
-      //             <button onClick={() => this.closeSection()}><i className="fas fa-times"></i></button>
-      //             <div className="picture-and-des">
-      //                 <div className="index-des">
-      //                     <p>{video.title}</p>
-      //                     <p>{video.year}</p>
-      //                     <p>{video.duration}</p>
-      //                 </div>
-      //                 <div className="index-img">
-      //                     <img src={video.thumbnail} alt={video.title} />
-      //                 </div>
-      //             </div>
-      //         </div>
-      //     </div>
-      // ) : (
-      //     ""
-      // )
-
-
-      var visibility = showController ? "now-you-see-me" : "now-you-dont"; // const audio = muted ?
-      //     (<button className="mute-button" onClick={this.toggleMute}>
-      //         <i className="fas fa-volume-mute"></i>
-      //     </button>
-      //     ) : (
-      //         <button className="mute-button" onClick={this.toggleMute}>
-      //             <i className="fas fa-volume-up"></i>
-      //         </button>)
-
+      var showController = this.state.showController;
+      var visibility = showController ? "now-you-see-me" : "now-you-dont";
       var listButton = onlist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-check"
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -942,7 +855,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
 
       if (pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "item ".concat(specialCombo),
+          className: "item",
           key: key,
           onMouseEnter: this.openController(),
           onMouseLeave: this.closeController()
