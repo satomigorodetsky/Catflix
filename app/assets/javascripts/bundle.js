@@ -940,7 +940,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
       });
       var pathname = this.props.location.pathname;
 
-      if (pathname == "/search" || pathname === "/browse") {
+      if (pathname === "/browse") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "item ".concat(specialCombo),
           key: key,
@@ -979,7 +979,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
             return event.currentTarget.pause();
           }
         })));
-      } else if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist") {
+      } else if (pathname == "/search" || pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "item ".concat(specialCombo),
           key: key,
@@ -2624,7 +2624,7 @@ var SearchIndex = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), showErrors, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index-search"
+        className: "container"
       }, allVideos), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);

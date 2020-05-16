@@ -45,7 +45,7 @@ class SearchIndex extends React.Component {
             <div className="search-index-container">
                 <NavBarContainer />            
                 {showErrors}
-                <div className="video-index-search">
+                <div className="container">
                   {allVideos}
                 </div>
                 <div>

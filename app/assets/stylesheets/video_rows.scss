@@ -116,6 +116,9 @@
   margin: 0 2px;
   transition: transform 300ms ease 100ms;
   position: relative;
+      video {
+      border: 8px solid white
+    }
 }
 
 .specialItem:hover {

@@ -159,7 +159,7 @@ class VideoItem extends React.Component {
         const pathname = this.props.location.pathname;
 
 
-        if (pathname == "/search" || pathname === "/browse")  {
+        if (pathname === "/browse")  {
             
             return (
                 <>
@@ -177,7 +177,7 @@ class VideoItem extends React.Component {
 
                 </>
             )
-        } else if (pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist" ) {
+        } else if (pathname == "/search" || pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist" ) {
 
                 return (
 
