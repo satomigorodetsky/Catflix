@@ -894,7 +894,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
         })));
       } else if (pathname == "/search" || pathname === "/browse/tvshows" || pathname === "/browse/movies" || pathname === "/browse/mylist") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "item ".concat(specialCombo),
+          className: "item",
           key: key,
           onMouseEnter: this.openController(),
           onMouseLeave: this.closeController()
