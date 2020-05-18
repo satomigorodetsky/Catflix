@@ -876,7 +876,7 @@ var VideoItem = /*#__PURE__*/function (_React$Component) {
             return setDropDown(video.id);
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-angle-down"
+          className: "fas fa-angle-down hoveri"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "video-index-title"
         }, video.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
@@ -1609,7 +1609,7 @@ var VideoShow = /*#__PURE__*/function (_React$Component) {
         className: "arrow",
         onClick: this.handleGoBack
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-arrow-left",
+        className: "fas fa-arrow-left hoveri",
         onMouseEnter: this.handleFocus(true),
         onMouseLeave: this.handleFocus(false)
       }), showText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

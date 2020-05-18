@@ -78,7 +78,7 @@ class VideoItem extends React.Component {
                         <div className={`video-controller ${visibility}`}>
                             <button className="play-index-button"><Link to={`/browse/${video.id}`}><i className="fas fa-play video-div"></i></Link></button>
                             <button className="list-index-button" onClick={this.handleList(video.id)}>{listButton}</button>
-                            <div className="detail-index-button" onClick={() => setDropDown(video.id)}><i className="fas fa-angle-down"></i></div>
+                            <div className="detail-index-button" onClick={() => setDropDown(video.id)}><i className="fas fa-angle-down hoveri"></i></div>
                              <p className="video-index-title">{video.title}</p>
                         </div>
                         <video className="video-rows" src={video.url} muted={true} onMouseEnter={event => event.currentTarget.play()} preload="true" poster={video.thumbnail}

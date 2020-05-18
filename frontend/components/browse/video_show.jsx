@@ -59,7 +59,7 @@ class VideoShow extends React.Component {
     render () {
 
         const { mouseMoving, showText } = this.state;
-        let arrow = mouseMoving ? <div className="arrow" onClick={this.handleGoBack}><i className="fas fa-arrow-left" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)} ></i>
+        let arrow = mouseMoving ? <div className="arrow" onClick={this.handleGoBack}><i className="fas fa-arrow-left hoveri" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)} ></i>
             {showText ? <div className="back-to">&nbsp; Back to Browse</div> : "" } </div> : "" ;
 
     if (this.props.video === undefined) return null;
