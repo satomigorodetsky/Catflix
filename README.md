@@ -62,25 +62,36 @@ Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix
   ```
 ## Display Videos
 
-* Users can hover over a video and see the preview of the video. 
+* Users can hover over a video and see the preview of the video, also they are able to click details and see the description of the video.
 
-![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/preview.png)
-
+![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/video_detail.png)
 
 ## Search 
 
-* Checked URL path ```/search``` so that users can do another search right after search. 
+* Utilized ```debounce``` from lodash. A request is fired off to the server once the user hasn't typed for 430ms, using a debounced function.
 
-```javascript   handleSubmit(e) {
-    e.preventDefault();
-    this.props.history.push(`/search?keyword=${this.state.query}`);
-    this.setState({query: ''})
-
-    if (this.props.location.pathname === "/search" ) {
-          e.preventDefault();
-          this.props.searchVideos(this.state.query);
-          this.setState({ query: '' })
+```javascript 
+    this.debouncedMakeRequest = debounce(this.debouncedMakeRequest, 430);
+```
+```javascript
+  handleInput(e) {
+    
+    let query = e.currentTarget.value;
+    this.setState({
+      query
+    }); 
+    if (query === "") {
+      this.setState({ query: "" });
+    } else {
+      this.debouncedMakeRequest(query);
     }
-  };```
-  
-  
+  }
+
+  debouncedMakeRequest() {
+    this.props.history.push(`/search?keyword=${this.state.query}`);
+      if (this.props.location.pathname === "/search" ) {
+        this.props.searchVideos(this.state.query);
+      }
+  }
+ ```
+ 
