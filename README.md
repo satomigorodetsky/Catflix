@@ -62,10 +62,9 @@ Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix
   ```
 ## Display Videos
 
-* Users can hover over a video and see the preview of the video. 
+* Users can hover over a video and see the preview of the video, also they are able to click details and see the description of the video.
 
-![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/preview.png)
-
+![alt text](https://github.com/Sokada101/Catflix/blob/master/app/assets/images/readme_assets/video_detail.png)
 
 ## Search 
 
