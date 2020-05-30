@@ -83,6 +83,10 @@
   overflow: auto;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 // needs to be changed
 .container video {
   width: 450px;
