@@ -2722,7 +2722,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function focusField(field) {
       var _this2 = this;
 
-      var value;
+      // not sure if the key will be "email_hover" OR "password_hover"
+      // so the key is [field]
       return function () {
         return _this2.setState(_defineProperty({}, field, !_this2.state.errors[field]));
       };
@@ -2735,19 +2736,19 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var hoverValue = field === "password" ? "password_hover" : "email_hover";
       var blankValue = field === "password" ? "password_blank" : "email_blank";
       return function (e) {
-        if (_this3.state.field === "") {
+        if (field === "password" && _this3.state.password.length < 4) {
           var _errors;
 
           return _this3.setState({
             errors: (_errors = {}, _defineProperty(_errors, hoverValue, !_this3.state.errors[hoverValue]), _defineProperty(_errors, blankValue, true), _errors)
           });
-        } else if (field === "password" && _this3.state.password.length < 4) {
+        } else if (field === "email" && _this3.state.email.length < 4) {
           var _errors2;
 
           return _this3.setState({
             errors: (_errors2 = {}, _defineProperty(_errors2, hoverValue, !_this3.state.errors[hoverValue]), _defineProperty(_errors2, blankValue, true), _errors2)
           });
-        } else if (field === "email" && _this3.state.email.length < 1) {
+        } else if (_this3.state.field === "") {
           var _errors3;
 
           return _this3.setState({

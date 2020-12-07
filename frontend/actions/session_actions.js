@@ -36,7 +36,6 @@ export const signup = (user) => (dispatch) => {
     return ApiUtil.signup(user)
     .then((user) => dispatch(receiveCurrentUser(user)),
     err => { 
-
        return dispatch(receiveErrors(err.responseJSON))
     })
 };

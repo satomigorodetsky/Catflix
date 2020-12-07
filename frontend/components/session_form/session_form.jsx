@@ -23,8 +23,10 @@ class SessionForm extends React.Component{
    componentDidMount() {
        this.props.deleteErrors(this.props.errors);
    }
+
    focusField(field) {
-       let value;
+       // not sure if the key will be "email_hover" OR "password_hover"
+       // so the key is [field]
        return () => this.setState({
            [field]: !(this.state.errors[field])
        });
@@ -35,28 +37,27 @@ class SessionForm extends React.Component{
        let blankValue = field === "password" ? "password_blank" : "email_blank";
 
        return (e) => {
-           if (this.state.field === "") {
-              return this.setState({
-                   errors: {  
-                   [hoverValue]: !(this.state.errors[hoverValue]),
-                   [blankValue]: true 
-                  }
-                });
-           } else if (field === "password" && this.state.password.length < 4 ) {
+           if (field === "password" && this.state.password.length < 4 ) {
               return  this.setState({
                    errors: {
                        [hoverValue]: !(this.state.errors[hoverValue]),
                        [blankValue]: true 
                    }
                });        
-           } 
-           else if (field === "email" && this.state.email.length < 1 ){
+           } else if (field === "email" && this.state.email.length < 4 ){
               return this.setState({
                    errors: {
                        [hoverValue]: !(this.state.errors[hoverValue]),
                        [blankValue]: true 
                    }
                });
+           }  else if (this.state.field === "") {
+              return this.setState({
+                   errors: {  
+                   [hoverValue]: !(this.state.errors[hoverValue]),
+                   [blankValue]: true 
+                  }
+                });
            } else {
                return this.setState({
                    errors: {
