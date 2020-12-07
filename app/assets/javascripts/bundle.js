@@ -2722,8 +2722,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function focusField(field) {
       var _this2 = this;
 
-      // not sure if the key will be "email_hover" OR "password_hover"
-      // so the key is [field]
       return function () {
         return _this2.setState(_defineProperty({}, field, !_this2.state.errors[field]));
       };

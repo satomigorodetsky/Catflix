@@ -25,8 +25,6 @@ class SessionForm extends React.Component{
    }
 
    focusField(field) {
-       // not sure if the key will be "email_hover" OR "password_hover"
-       // so the key is [field]
        return () => this.setState({
            [field]: !(this.state.errors[field])
        });
