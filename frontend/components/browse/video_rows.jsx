@@ -44,127 +44,32 @@ class VideoRows extends React.Component {
        }
 
 
+    render () {      
+         const { videos } = this.props;
 
-    render () {
-           
-       const { videos } = this.props;
-       const { tid, mid, caid, coid, doid, aid, hid, muid } = this.state;
+         const ids = [this.state.tid, this.state.mid, this.state.caid, this.state.coid, this.state.doid, this.state.aid, this.state.hid, this.state.muid]
 
-       let allTvShows;
-       let allMovies;
-       let allCartoon; 
-       let allComedy;
-       let allDocumentary;
-       let allAction;
-       let allHorror;
-       let allMusical;
+         const names = [ 'tid', 'mid', 'caid', 'coid', 'doid', 'aid', 'hid', 'muid' ];
 
-       allTvShows = videos.map((video, key) => {
-              
-              if (video.video_type === "tv show") {
-                     return (
-                            <VideoItemContainer setDropDown={this.setDropDown('tid')} video={video} key={key} muted={true} />
-                     )
-              }
-       })
+         let allTvShows;
 
-       allMovies = videos.map((video, key) => {
-              if (video.video_type === "movie") {
-                     return (
-                            <VideoItemContainer setDropDown={this.setDropDown('mid')} video={video} key={key} muted={true} />
-                     )
-              }
-       })
-
-       allCartoon = videos.map((video, key) => {
-              if (video.genre === "Cartoon") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('caid')}  video={video} key={key} muted={true}  />
-              }
-       })
-
-       allComedy = videos.map((video, key) => {
-              if (video.genre === "Comedy") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('coid')}  video={video} key={key} />
-              }
-       })
-
-       allDocumentary = videos.map((video, key) => {
-              if (video.genre === "Documentary") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('doid')}  video={video} key={key} />
-              }
-       })
-
-       allAction = videos.map((video, key) => {
-              if (video.genre === "Action") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('aid')}  video={video} key={key} />
-              }
-       })
-       allHorror = videos.map((video, key) => {
-              if (video.genre === "Horror") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('hid')}  video={video} key={key} />
-              }
-       })
-
-       allMusical = videos.map((video, key) => {
-              if (video.genre === "Musical") {
-                     return <VideoItemContainer setDropDown={this.setDropDown('muid')}  video={video} key={key} />
-              }
-       })
-       
-       return (
-              <>
-                     <div className="category">TV Shows</div>
-                     <div className="container">
-                            {allTvShows} 
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('tid')} id={tid}/> 
+              allTvShows = videos.map((video, key) => {
                      
-                     <div className="category">Movies</div>
-                     <div className="container">
-                            {allMovies} 
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('mid')} id={mid} /> 
-                     <div className="category">Cartoon</div>
-                     <div className="container">
-                            {allCartoon}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('caid')} id={caid} /> 
+                     return (
+                            <>
+                            <div className="category">{video.genre}</div>
+                                   <div className="container">
+                                   <VideoItemContainer setDropDown={this.setDropDown(`${names[key]}`)} video={video} key={key} muted={true} />
+                                   </div> 
+                            <VideoDetailContainer setDropDown={this.setDropDown(`${names[key]}`)} id={ids[key]}/> 
+                     </>
+                     )
 
-                     <div className="category">Comedy</div>
-                     <div className="container">
-                            {allComedy}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('coid')} id={coid} /> 
+              });
 
-                     <div className="category">Documentary</div>
-                     <div className="container">
-                            {allDocumentary}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('doid')} id={doid} /> 
+              return allTvShows
+       };
 
-
-                     <div className="category">Action</div>
-                     <div className="container">
-                            {allAction}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('aid')} id={aid} /> 
-
-                     <div className="category">Horror</div>
-                     <div className="container">
-                            {allHorror}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('hid')} id={hid} /> 
-
-                     <div className="category">Muscial</div>
-                     <div className="container">
-                            {allMusical}
-                     </div> 
-                     <VideoDetailContainer setDropDown={this.setDropDown('muid')} id={muid} /> 
-
-              </>
-                   
-          )
-       } 
 };
 
 export default VideoRows;

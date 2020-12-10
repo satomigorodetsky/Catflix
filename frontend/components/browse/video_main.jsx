@@ -26,10 +26,8 @@ class VideoMain extends React.Component {
 
             e.preventDefault();
             if (onlist) {
-                
                 removeFromMyList(id);
             } else {
-               
                 addToMyList(id)
             }
         }

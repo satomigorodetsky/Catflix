@@ -1292,155 +1292,25 @@ var VideoRows = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var videos = this.props.videos;
-      var _this$state = this.state,
-          tid = _this$state.tid,
-          mid = _this$state.mid,
-          caid = _this$state.caid,
-          coid = _this$state.coid,
-          doid = _this$state.doid,
-          aid = _this$state.aid,
-          hid = _this$state.hid,
-          muid = _this$state.muid;
+      var ids = [this.state.tid, this.state.mid, this.state.caid, this.state.coid, this.state.doid, this.state.aid, this.state.hid, this.state.muid];
+      var names = ['tid', 'mid', 'caid', 'coid', 'doid', 'aid', 'hid', 'muid'];
       var allTvShows;
-      var allMovies;
-      var allCartoon;
-      var allComedy;
-      var allDocumentary;
-      var allAction;
-      var allHorror;
-      var allMusical;
       allTvShows = videos.map(function (video, key) {
-        if (video.video_type === "tv show") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('tid'),
-            video: video,
-            key: key,
-            muted: true
-          });
-        }
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "category"
+        }, video.genre), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          setDropDown: _this2.setDropDown("".concat(names[key])),
+          video: video,
+          key: key,
+          muted: true
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          setDropDown: _this2.setDropDown("".concat(names[key])),
+          id: ids[key]
+        }));
       });
-      allMovies = videos.map(function (video, key) {
-        if (video.video_type === "movie") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('mid'),
-            video: video,
-            key: key,
-            muted: true
-          });
-        }
-      });
-      allCartoon = videos.map(function (video, key) {
-        if (video.genre === "Cartoon") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('caid'),
-            video: video,
-            key: key,
-            muted: true
-          });
-        }
-      });
-      allComedy = videos.map(function (video, key) {
-        if (video.genre === "Comedy") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('coid'),
-            video: video,
-            key: key
-          });
-        }
-      });
-      allDocumentary = videos.map(function (video, key) {
-        if (video.genre === "Documentary") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('doid'),
-            video: video,
-            key: key
-          });
-        }
-      });
-      allAction = videos.map(function (video, key) {
-        if (video.genre === "Action") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('aid'),
-            video: video,
-            key: key
-          });
-        }
-      });
-      allHorror = videos.map(function (video, key) {
-        if (video.genre === "Horror") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('hid'),
-            video: video,
-            key: key
-          });
-        }
-      });
-      allMusical = videos.map(function (video, key) {
-        if (video.genre === "Musical") {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            setDropDown: _this2.setDropDown('muid'),
-            video: video,
-            key: key
-          });
-        }
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "TV Shows"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allTvShows), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('tid'),
-        id: tid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Movies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allMovies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('mid'),
-        id: mid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Cartoon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allCartoon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('caid'),
-        id: caid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allComedy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('coid'),
-        id: coid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Documentary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allDocumentary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('doid'),
-        id: doid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allAction), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('aid'),
-        id: aid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Horror"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allHorror), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('hid'),
-        id: hid
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "category"
-      }, "Muscial"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, allMusical), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_detail_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        setDropDown: this.setDropDown('muid'),
-        id: muid
-      }));
+      return allTvShows;
     }
   }]);
 
@@ -2808,10 +2678,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.submitForm(user); //    this.setState({
-      //        email: '',
-      //        password: ''
-      //    })
+      this.props.submitForm(user);
     }
   }, {
     key: "handleDemoLogin",
