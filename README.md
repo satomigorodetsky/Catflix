@@ -1,5 +1,6 @@
 # README
 
+Catflix is currently under maintenance! Thank you. 
 # [Link to Catflix](https://catflix-app.herokuapp.com/#/)
 
 ## Basic Overview
