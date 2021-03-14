@@ -1,7 +1,6 @@
 # README
 
-# Catflix is currently under maintenance!
-# [Link to Catflix](https://catflix-app.herokuapp.com/#/)
+# [Catflix is currently under maintenance!](https://catflix-app.herokuapp.com/#/)
 
 ## Basic Overview
 Catflix is a clone of Netflix made specifically for cat lovers. Users of Catflix can create accounts, search and stream videos. Catflix was created with React, Redux, and Rails. 
